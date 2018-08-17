@@ -1,15 +1,20 @@
 .row {
     max-width: $grid-width;
-    margin: 0 auto;
+    margin: 2.5rem auto;
+    overflow: hidden;
     &:not(:last-child) {
         margin-bottom: $gutter-vertical;
     }
     @include clearfix;
     [class^="col-"] {
         float: left;
+        background-color: aliceblue;
         &:not(:last-child) {
             margin-right: $gutter-horizontal;
         }
+    }
+    .col-4-of-4 {
+        width: 100%;
     }
     .col-1-of-2 {
         width: calc((100% - #{$gutter-horizontal}) / 2);
