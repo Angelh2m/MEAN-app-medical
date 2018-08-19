@@ -6,8 +6,9 @@ import { HeaderService } from './shared/header.service';
   imports: [
     CommonModule
   ],
-  declarations: [
+  providers: [
     HeaderService
-  ]
+  ],
+  declarations: []
 })
 export class ServicesModule { }

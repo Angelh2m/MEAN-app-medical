@@ -5,6 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class HeaderService {
 
+  constructor() { }
+
   menu: any = [
     {
       titulo: 'Principal',
@@ -18,5 +20,4 @@ export class HeaderService {
   ];
 
 
-  constructor() { }
 }

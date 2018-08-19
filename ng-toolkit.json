@@ -1,12 +1,17 @@
 {
   "serverless": {
     "provider": "aws",
-    "skipInstall": false,
+    "skipInstall": true,
     "directory": ".",
     "project": "MEAN-Stack-Medical",
     "serverless": {
       "aws": {},
       "gcloud": {}
     }
+  },
+  "universal": {
+    "skipInstall": false,
+    "directory": ".",
+    "project": "MEAN-Stack-Medical"
   }
 }
