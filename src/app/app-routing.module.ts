@@ -2,7 +2,6 @@
 import { Routes, RouterModule } from '@angular/router';
 import { LandingComponent } from './landing/landing.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { HomeComponent } from './dashboard/home/home.component';
 
 
 const appRoutes: Routes = [

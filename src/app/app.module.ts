@@ -11,15 +11,12 @@ import { DashboardModule } from './dashboard/dashboard.module';
 
 import { LandingComponent } from './landing/landing.component';
 import { AppComponent } from './app.component';
-// import { DashboardComponent } from './dashboard/dashboard.component';
-// import { HomeComponent } from './dashboard/home/home.component';
 import { LandingModule } from './landing/landing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingComponent,
-
   ],
   imports: [
     CommonModule,
