@@ -1,7 +1,34 @@
+.container{
+    width: 100vw;
+    margin-left: -3rem;
+    overflow: hidden;
+
+    .row{
+        padding: 3rem;
+    }
+
+}
 .row {
     max-width: $grid-width;
     margin: 2.5rem auto;
-    overflow: hidden;
+
+    position: relative;
+
+    &--background:before{
+        content: '';
+        position: absolute;
+        width: 100vw;
+        height: 100%;
+        // background-color: aquamarine;
+
+         background-color: #f9f9f9;
+         transform: skew(15deg, 15deg);
+        z-index: -9;
+        left: 0;
+        // margin-left: -30px;
+
+    }
+
     &:not(:last-child) {
         margin-bottom: $gutter-vertical;
     }
@@ -9,6 +36,7 @@
     [class^="col-"] {
         float: left;
         background-color: aliceblue;
+        overflow: hidden;
         &:not(:last-child) {
             margin-right: $gutter-horizontal;
         }
