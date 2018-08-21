@@ -13,22 +13,22 @@ import { LandingComponent } from './landing/landing.component';
 import { AppComponent } from './app.component';
 // import { DashboardComponent } from './dashboard/dashboard.component';
 // import { HomeComponent } from './dashboard/home/home.component';
+import { LandingModule } from './landing/landing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingComponent,
-    // DashboardComponent,
-    // HomeComponent
+
   ],
   imports: [
     CommonModule,
     NgtUniversalModule,
 
-
     APP_ROUTES,
     SharedModule,
-    DashboardModule
+    DashboardModule,
+    LandingModule
 
   ],
   providers: [],

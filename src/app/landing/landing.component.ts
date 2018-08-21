@@ -5,7 +5,6 @@ import { DOCUMENT } from '@angular/platform-browser';
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
-  styleUrls: ['./landing.component.scss']
 })
 
 
