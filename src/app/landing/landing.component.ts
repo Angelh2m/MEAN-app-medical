@@ -1,16 +1,42 @@
 import { Component, OnInit, Inject, } from '@angular/core';
 import { Faq } from '../interfaces/faq';
-import { DOCUMENT } from '@angular/platform-browser';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+// import { DOCUMENT } from '@angular/platform-browser';
+import { LoginService } from '../services/login/login.service';
+
 
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
 })
 
-
-// interface Faq extends Array<MyObject> { };
-
 export class LandingComponent implements OnInit {
+
+  form: FormGroup;
+
+  constructor(public loginService: LoginService) { }
+
+  ngOnInit() {
+    this.form = new FormGroup({
+      email: new FormControl(null, [Validators.required, Validators.email]),
+      name: new FormControl(null, Validators.required),
+      password: new FormControl(null, Validators.required)
+    });
+  }
+
+
+  getLogin() {
+    console.log('Submit');
+    console.log(this.form.value);
+
+  }
+
+
+  onToggle(event) {
+    let isActive = event.path[1].className.split(' ').indexOf('faq--is-active') > 0;
+    isActive == false ? event.path[1].classList.add("faq--is-active") : null;
+    isActive == true ? event.path[1].classList.remove("faq--is-active") : null;
+  }
 
   questions: Faq[] = [
     {
@@ -26,33 +52,6 @@ export class LandingComponent implements OnInit {
       response: 'Correct final price taxes included'
     }
   ];
-
-
-
-  constructor(@Inject(DOCUMENT) private _document) { }
-
-  ngOnInit() {
-
-
-  }
-
-  ngAfterViewInit() {
-    console.log(
-      this._document.getElementById('questions'));
-  }
-
-  onToggle(event) {
-    let isActive = event.path[1].className.split(' ').indexOf('faq--is-active') > 0;
-    isActive == false ? event.path[1].classList.add("faq--is-active") : null;
-    isActive == true ? event.path[1].classList.remove("faq--is-active") : null;
-
-    // event.path[1].classList.add("faq--is-active")'
-    console.log(event.path[1].className.split(' ').indexOf('faq--is-active') > 1);
-
-    console.log(event.path[1].className.split(' '));
-    console.log(isActive);
-
-  }
 
 }
 

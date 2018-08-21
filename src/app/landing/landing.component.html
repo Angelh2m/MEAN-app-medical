@@ -40,6 +40,15 @@
 
 </section>
 
+<form ngNativeValidate [formGroup]="form" (ngSubmit)="getLogin()">
+    <input formControlName="email" type="text">
+    <input formControlName="name" type="text">
+    <input formControlName="password" type="text">
+
+    <button type="submit">LOGIN</button>
+
+</form>
+
 <section>
     <div class="row">
         <h6 class="subtitle">OUR MISSION</h6>
