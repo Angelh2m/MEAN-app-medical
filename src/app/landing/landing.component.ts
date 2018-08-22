@@ -3,7 +3,8 @@ import { Faq } from '../interfaces/faq';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 // import { DOCUMENT } from '@angular/platform-browser';
 import { LoginService } from '../services/login/login.service';
-
+import { User } from '../models/user.models';
+// import { Observable } from "rxjs/Observable";
 
 @Component({
   selector: 'app-landing',
@@ -14,7 +15,7 @@ export class LandingComponent implements OnInit {
 
   form: FormGroup;
 
-  constructor(public loginService: LoginService) { }
+  constructor(public _loginService: LoginService) { }
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -22,12 +23,28 @@ export class LandingComponent implements OnInit {
       name: new FormControl(null, Validators.required),
       password: new FormControl(null, Validators.required)
     });
+
   }
 
 
   getLogin() {
-    console.log('Submit');
-    console.log(this.form.value);
+    // console.log('Submit');
+
+    this.form.value.name = 'Angelh3m@gmail.com';
+    this.form.value.password = '123';
+    // console.log(this.form.value);
+
+    let user = new User(
+      this.form.value.email,
+      this.form.value.password
+    )
+
+    this._loginService.loginUser(user)
+      .subscribe(
+        res => console.log('FROM OBSV ', res),
+        err => console.log(err)
+      )
+
 
   }
 

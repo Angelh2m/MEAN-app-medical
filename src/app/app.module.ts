@@ -13,7 +13,6 @@ import { LandingComponent } from './landing/landing.component';
 import { AppComponent } from './app.component';
 import { LandingModule } from './landing/landing.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { ServicesModule } from './services/services.module';
 
 @NgModule({
   declarations: [
@@ -29,11 +28,13 @@ import { ServicesModule } from './services/services.module';
     DashboardModule,
     LandingModule,
     FormsModule,
-
     ReactiveFormsModule,
 
 
+
   ],
-  providers: [],
+  providers: [
+
+  ],
 })
 export class AppModule { }
