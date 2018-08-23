@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject, } from '@angular/core';
-import { Faq } from '../interfaces/faq';
+import { Faq } from '../utils/interfaces/faq';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 // import { DOCUMENT } from '@angular/platform-browser';
 import { LoginService } from '../services/login/login.service';
