@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
+  formTitle: string;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onChangeState(state) {
+    console.log(state);
+    this.formTitle = state.replace();
+
   }
 
 }

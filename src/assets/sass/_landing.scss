@@ -83,6 +83,28 @@ $title-color: #32325d;
         width: 18rem;
     
     }
+    &--login{
+        height: 4rem;
+        display: block;
+        width: 100%;
+        margin-bottom: 1rem;
+        border-radius: 5px;
+        background-color: white;
+        border: none;
+    }
+    &--form-submit{
+        background-color: #34d08c;
+        padding: 1rem;
+        margin-top: 3rem;
+        margin-left: 50%;
+        transform: translateX(-50%);
+        border: none;
+        border-radius: 5px;
+        color: white;
+        font-weight: 600;
+        letter-spacing: 1px;
+    
+    }
 }
 
 
@@ -111,6 +133,13 @@ $title-color: #32325d;
         // margin-bottom: 5rem;
         display: block;
     }
+
+    &--medium-blue{
+        color: #9cdbff;
+        text-align: center;
+        margin-bottom: 2rem;    
+    }
+
 }
 
 .text--small {
@@ -309,3 +338,53 @@ tr{
     }
 }
 
+
+
+.login{
+    background-color: #32325d;
+    padding: 5rem;
+    li{
+        cursor: pointer;
+        line-height: 1;
+        margin: 1.5rem 0rem;
+    }
+    &__options{
+        list-style: none;
+        margin-bottom: 2rem;
+    }
+
+    &__label{
+        margin-left: 2rem;
+        color: white;
+        font-size: 1.2rem;
+        cursor: pointer;
+    }
+}
+
+// FORM MODULE
+.md-form{
+    input{
+        background-color: transparent;
+        border: solid 0px;
+        width: 100%;
+        color: white; 
+        border-bottom: solid 1px#8798ab;
+        line-height: 4;
+        transition: all 1s;
+
+        &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+            color: white;
+            transition: all 1s;
+        }
+        &:focus{
+            padding-left: 1rem;
+            &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+                color: white;
+                padding-left: 1rem;
+                transition: all 1s;
+            }
+        }
+
+    }
+
+}

@@ -1,3 +1,28 @@
-<div>
-  <h2>LOGIN</h2>
+<div class="login">
+  <h3 class="subtitle--medium-blue">LOGIN</h3>
+  <button class="button--login"> SIGN IN WITH FACEBOOK</button>
+  <button class="button--login"> SIGN IN WITH GMAIL</button>
+  <ul class="login__options">
+    <li (click)="onChangeState('Sign-in')">
+      <input id="Sign-in" name="selected" type="radio">
+      <label for="Sign-in" class="login__label">Sign in with an existing account</label>
+    </li>
+    <li (click)="onChangeState('Recover')">
+      <input id="Recover" name="selected" type="radio">
+      <label for="Recover" class="login__label">Forgot password</label>
+    </li>
+    <li (click)="onChangeState('Create-an-account')">
+      <input id="Create-an-account" name="selected" type="radio">
+      <label for="Create-an-account" class="login__label">Create account</label>
+    </li>
+  </ul>
+  <h3 class="subtitle--medium-blue">{{formTitle}}</h3>
+  <form class="md-form" *ngIf="formTitle">
+    <input type="text" placeholder="Name">
+    <input type="text" placeholder="Email">
+    <input type="text" placeholder="password">
+    <input type="text" placeholder="Confirm password">
+    <button class="button--form-submit">SUBMIT</button>
+  </form>
+
 </div>
