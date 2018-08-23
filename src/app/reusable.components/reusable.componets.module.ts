@@ -3,11 +3,15 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 // import { RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     // RouterModule
+    // Forms
+    FormsModule,
+    ReactiveFormsModule,
   ],
   declarations: [
     HeaderComponent,
@@ -15,7 +19,9 @@ import { LoginComponent } from './login/login.component';
   ],
   exports: [
     HeaderComponent,
-    LoginComponent
+    LoginComponent,
+    FormsModule,
+    ReactiveFormsModule,
   ]
 })
 export class ReusableComponets { }
