@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HeaderService } from '../services/shared/header.service';
 import { Router, ActivationEnd } from '@angular/router';
 import { filter, map } from 'rxjs/operators';
 import { Title, Meta, MetaDefinition } from '@angular/platform-browser';
@@ -11,7 +10,7 @@ import { Title, Meta, MetaDefinition } from '@angular/platform-browser';
 export class DashboardComponent implements OnInit {
 
   constructor(
-    public _sidebar: HeaderService,
+
     private router: Router,
     private title: Title,
     private meta: Meta
@@ -38,7 +37,7 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this._sidebar);
+
   }
 
 }

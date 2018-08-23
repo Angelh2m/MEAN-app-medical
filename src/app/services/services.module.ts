@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeaderService } from './shared/header.service';
 import { LoginService } from './login/login.service';
 
 
@@ -9,7 +8,6 @@ import { LoginService } from './login/login.service';
     CommonModule,
   ],
   providers: [
-    HeaderService,
     LoginService,
 
   ],

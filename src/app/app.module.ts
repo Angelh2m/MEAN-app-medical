@@ -5,13 +5,12 @@ import { NgModule } from '@angular/core';
 
 import { APP_ROUTES } from './app-routing.module';
 
-import { SharedModule } from './shared/shared.module';
-import { DashboardModule } from './dashboard/dashboard.module';
+import { ReusableComponets } from './reusable.components/reusable.componets.module';
+import { DashboardModule } from './dashboard.path/dashboard.module';
 
-
-import { LandingComponent } from './landing/landing.component';
+import { LandingComponent } from './landing.path/landing.component';
 import { AppComponent } from './app.component';
-import { LandingModule } from './landing/landing.module';
+import { LandingModule } from './landing.path/landing.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -22,19 +21,15 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     NgtUniversalModule,
-
     APP_ROUTES,
-    SharedModule,
-    DashboardModule,
-    LandingModule,
+    ReusableComponets,
+    // Forms
     FormsModule,
     ReactiveFormsModule,
-
-
-
+    //Paths
+    DashboardModule,// Dashboard Path
+    LandingModule,// Dashboard Path
   ],
-  providers: [
-
-  ],
+  providers: [],
 })
 export class AppModule { }
