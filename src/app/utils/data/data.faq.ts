@@ -1,5 +1,6 @@
+import { Faq } from '../interfaces/faq';
 
-export const FaqData = [
+export const FaqData: Faq[] = [
     {
         question: 'Where are you located?',
         response: 'We are located in Mexico'
