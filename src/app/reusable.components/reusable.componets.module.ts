@@ -27,8 +27,6 @@ import { APP_MULTI_ROUTES } from './reusable.routing.module';
   exports: [
     HeaderComponent,
     LoginComponent,
-    // FormsModule,
-    // ReactiveFormsModule,
   ],
   providers: [
     {
