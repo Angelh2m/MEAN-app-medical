@@ -17,12 +17,19 @@
     </li>
   </ul>
   <h3 class="subtitle--medium-blue">{{formTitle}}</h3>
-  <form class="md-form" *ngIf="formTitle">
+  <form class="md-form" *ngIf="formTitle" (ngSubmit)="onFormSumbit()">
     <input type="text" placeholder="Name">
     <input type="text" placeholder="Email">
     <input type="text" placeholder="password">
     <input type="text" placeholder="Confirm password">
-    <button class="button--form-submit">SUBMIT</button>
+    <button type="submit" class="button--form-submit">SUBMIT</button>
   </form>
-
+  <!-- 
+  <form ngNativeValidate [formGroup]="form" (ngSubmit)="getLogin()">
+      <input formControlName="email" value="Angelh3m@gmail.com" type="text" placeholder="email">
+      <input formControlName="name" type="text" placeholder="Name">
+      <input formControlName="password" value="123" type="text" placeholder="Password">
+      <button type="submit">LOGIN</button>
+  </form>
+   -->
 </div>

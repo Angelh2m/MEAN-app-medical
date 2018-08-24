@@ -1,4 +1,4 @@
-<app-header></app-header>
+<app-header theme="transparent"></app-header>
 
 <section>
     <div class="hero">
@@ -30,12 +30,6 @@
 
 </section>
 
-<form ngNativeValidate [formGroup]="form" (ngSubmit)="getLogin()">
-    <input formControlName="email" value="Angelh3m@gmail.com" type="text" placeholder="email">
-    <input formControlName="name" type="text" placeholder="Name">
-    <input formControlName="password" value="123" type="text" placeholder="Password">
-    <button type="submit">LOGIN</button>
-</form>
 
 <app-login></app-login>
 
@@ -49,7 +43,6 @@
     </div>
 </section>
 
-<!-- <hr> -->
 
 <section class="container">
     <div class="row row--background">
@@ -70,7 +63,6 @@
 
 </section>
 
-<!-- <hr> -->
 
 <section class="container">
     <div class="row">

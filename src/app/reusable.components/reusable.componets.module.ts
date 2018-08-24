@@ -4,6 +4,9 @@ import { HeaderComponent } from './header/header.component';
 // import { RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+// HTTP
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoginInterceptor } from '../services/login/login.interceptor';
 
 @NgModule({
   imports: [
@@ -12,6 +15,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     // Forms
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],
   declarations: [
     HeaderComponent,
@@ -22,6 +26,13 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     LoginComponent,
     FormsModule,
     ReactiveFormsModule,
-  ]
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoginInterceptor,
+      multi: true
+    }
+  ],
 })
 export class ReusableComponets { }
