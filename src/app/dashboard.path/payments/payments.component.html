@@ -1,3 +1,37 @@
+<app-header theme="dark"></app-header>
+<div class="payments ">
+  <div class="payments__container ">
+    <div class="col-1-of-3">
+      <i class="icon-selectPlan"></i>
+      <h6><a [routerLink]="['/payments']">PUBLICK</a></h6>
+    </div>
+    <div class="col-1-of-3">
+      <i class="icon-payment"></i>
+      <h6><a [routerLink]="['card']">Payment</a></h6>
+    </div>
+    <div class="col-1-of-3">
+      <i class="icon-receipt"></i>
+      <h6><a [routerLink]="['payment-confirmation']">PROTECTED</a></h6>
+    </div>
+  </div>
+</div>
+
+<section class="container">
+
+  <router-outlet></router-outlet>
+  <div class="row">
+
+    <div class="membership row ">
+      <small class="membership__info">Valid only for one surgery</small>
+      <strong class="membership__price">$45</strong>
+      <h4 class="membership__package-name">Personal Support</h4>
+      <button class="membership__buy-button">Buy Now</button>
+    </div>
+  </div>
+</section>
+
+
+
 <p>
-  payments works!
+  payments works! HEADER
 </p>

@@ -1,0 +1,21 @@
+
+.payments{
+    &__container{
+        background-color: $color-primary-background;
+        color: white;
+        width: 100vw;
+        margin-left: -3rem;
+        padding-left: 3rem;
+        display: flex;
+        text-align: center;
+        padding-right: 3rem;
+        justify-content: space-around;
+        i{
+            position: relative;
+            display: inline-block;
+        }
+        a{
+            color: white;
+        }
+    }
+}

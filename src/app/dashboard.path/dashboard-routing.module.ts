@@ -6,14 +6,27 @@ import { PaymentsComponent } from './payments/payments.component';
 import { LandingComponent } from '../landing.path/landing.component';
 
 
-const appRoutes: Routes = [
-  { path: '', component: LandingComponent },
-  { path: 'dashboard', component: DashboardComponent, data: { title: 'dashboard' } },
-  // { path: 'login', component: LoginComponent, data: { title: 'login' } },
-  // { path: '**', component: NopagefoundComponent }
+// const appRoutes: Routes = [
+//   // { path: '', component: LandingComponent },
+//   // { path: 'dashboard', component: DashboardComponent, data: { title: 'dashboard' } },
+//   // { path: 'login', component: LoginComponent, data: { title: 'login' } },
+//   // { path: '**', component: NopagefoundComponent }
+// ];
+// export const PAGES_ROUTES = RouterModule.forRoot(appRoutes);
+
+
+const aboutRoutes: Routes = [
+  // {
+  //   path: 'about',
+  //   component: PaymentsComponent,
+  //   children: [
+  //     {
+  //       path: '',
+  //       component: LandingComponent
+  //     }
+  //   ]
+  // }
 ];
 
-
-export const PAGES_ROUTES = RouterModule.forRoot(appRoutes);
-
+export const PAGES_ROUTES = RouterModule.forChild(aboutRoutes);
 
