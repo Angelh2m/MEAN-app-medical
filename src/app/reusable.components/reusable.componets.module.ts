@@ -7,11 +7,14 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 // HTTP
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginInterceptor } from '../services/login/login.interceptor';
+import { APP_MULTI_ROUTES } from './reusable.routing.module';
 
 @NgModule({
   imports: [
     CommonModule,
     // RouterModule
+    APP_MULTI_ROUTES,
+
     // Forms
     FormsModule,
     ReactiveFormsModule,

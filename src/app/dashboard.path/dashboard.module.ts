@@ -16,8 +16,6 @@ import { ReusableComponets } from '../reusable.components/reusable.componets.mod
     HomeComponent,
     DashboardComponent,
     PaymentsComponent,
-
-
   ]
 })
 export class DashboardModule { }

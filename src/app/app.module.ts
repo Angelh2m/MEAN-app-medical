@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 
-import { APP_ROUTES } from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 
 import { ReusableComponets } from './reusable.components/reusable.componets.module';
 import { DashboardModule } from './dashboard.path/dashboard.module';
@@ -22,7 +22,7 @@ import { LandingModule } from './landing.path/landing.module';
     NgtUniversalModule,
     ReusableComponets,
     // Routes
-    APP_ROUTES,
+    AppRoutingModule,
     // Child Routes
     DashboardModule,// Dashboard Path
     LandingModule,// Landing Path

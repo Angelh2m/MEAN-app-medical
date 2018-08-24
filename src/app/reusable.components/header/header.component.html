@@ -10,7 +10,9 @@
             <div class="navigation__items" for="navi-toggle">
                 <nav>
                     <ul>
-                        <li routerLink="login">Login</li>
+                        <li [routerLink]="['/login']">Login</li>
+                        <li routerLink="dashboard">Dashboard</li>
+                        <a routerLink='payments' routerLinkActive="active">HERE</a>
                         <li>Store</li>
                     </ul>
                 </nav>

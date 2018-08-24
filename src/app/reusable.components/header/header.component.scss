@@ -12,6 +12,10 @@
         background: lightcoral;
         position: relative;
         width: 100vw;
+        height: 7rem;
+        display: block;
+
+ 
     }
 
     &__container{
@@ -24,6 +28,10 @@
     &__logo {
         font-size: 2rem;
         font-weight: 600;
+        a{
+            color: white;
+            text-decoration: none;
+        }
     }
     &__background {
         &--purple {
