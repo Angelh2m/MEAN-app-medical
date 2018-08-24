@@ -24,8 +24,8 @@ import { LoginInterceptor } from '../services/login/login.interceptor';
   exports: [
     HeaderComponent,
     LoginComponent,
-    FormsModule,
-    ReactiveFormsModule,
+    // FormsModule,
+    // ReactiveFormsModule,
   ],
   providers: [
     {
