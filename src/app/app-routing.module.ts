@@ -6,6 +6,8 @@ import { LoginComponent } from './reusable.components/login/login.component';
 import { NgModule } from '@angular/core';
 import { PaymentsComponent } from 'src/app/dashboard.path/payments/payments.component';
 import { LoginGuardGuard } from './services/service.index';
+import { PaymentConfirmationComponent } from './dashboard.path/payment-confirmation/payment-confirmation.component';
+import { PlanSelectionComponent } from './dashboard.path/plan-selection/plan-selection.component';
 
 
 
@@ -15,17 +17,22 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent, data: { title: 'login' } },
   // { path: 'payments', component: PaymentsComponent, data: { title: 'payments' } },
   {
-    path: 'payments', component: PaymentsComponent, data: { title: 'payments' },
+    path: 'payments', component: PlanSelectionComponent, data: { title: 'payments' },
 
     children: [
       {
+        path: 'selection',
+        component: PaymentsComponent,
+        canActivate: [LoginGuardGuard],
+      },
+      {
         path: 'card',
-        component: LoginComponent,
+        component: PaymentsComponent,
         canActivate: [LoginGuardGuard],
       },
       {
         path: 'payment-confirmation',
-        component: LoginComponent,
+        component: PaymentConfirmationComponent,
       }
     ]
   },
