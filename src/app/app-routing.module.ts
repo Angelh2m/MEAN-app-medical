@@ -7,19 +7,19 @@ import { LoginGuardGuard } from './services/service.index';
 
 import { PaymentsComponent } from 'src/app/checkout.path/payments/payments.component';
 import { PaymentConfirmationComponent } from './checkout.path/payment-confirmation/payment-confirmation.component';
-import { DashboardComponent } from './checkout.path/checkout.component';
+import { CheckoutComponent } from './checkout.path/checkout.component';
 import { PlanSelectionComponent } from './checkout.path/plan-selection/plan-selection.component';
 
 
 
 const appRoutes: Routes = [
   { path: '', component: LandingComponent },
-  { path: 'dashboard', component: DashboardComponent, data: { title: 'dashboard' } },
+  { path: 'checkout', component: CheckoutComponent, data: { title: 'Checkout' } },
   { path: 'login', component: LoginComponent, data: { title: 'login' } },
   // { path: 'payments', component: PaymentsComponent, data: { title: 'payments' } },
   {
     path: 'payments',
-    component: DashboardComponent,
+    component: CheckoutComponent,
     data: { title: 'payments' },
     children: [
       {

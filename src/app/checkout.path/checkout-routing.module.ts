@@ -1,14 +1,13 @@
 import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
-import { DashboardComponent } from './checkout.component';
+
 import { PaymentsComponent } from './payments/payments.component';
 import { LandingComponent } from '../landing.path/landing.component';
 
 
 // const appRoutes: Routes = [
 //   // { path: '', component: LandingComponent },
-//   // { path: 'dashboard', component: DashboardComponent, data: { title: 'dashboard' } },
 //   // { path: 'login', component: LoginComponent, data: { title: 'login' } },
 //   // { path: '**', component: NopagefoundComponent }
 // ];

@@ -4,10 +4,10 @@ import { filter, map } from 'rxjs/operators';
 import { Title, Meta, MetaDefinition } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-dashboard',
+  selector: 'app-checkout',
   templateUrl: './checkout.component.html'
 })
-export class DashboardComponent implements OnInit {
+export class CheckoutComponent implements OnInit {
 
   constructor(
 
@@ -17,8 +17,8 @@ export class DashboardComponent implements OnInit {
   ) {
 
     const metaTag: MetaDefinition = {
-      name: 'description of the dashboard',
-      content: 'My Dashboard',
+      name: 'description of the checkout',
+      content: 'My checkout',
     }
 
     this.meta.updateTag(metaTag);

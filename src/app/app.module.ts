@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { ReusableComponets } from './reusable.components/reusable.componets.module';
-import { DashboardModule } from './checkout.path/checkout.module';
+import { CheckoutModule } from './checkout.path/checkout.module';
 
 
 import { LandingComponent } from './landing.path/landing.component';
@@ -25,7 +25,7 @@ import { LandingModule } from './landing.path/landing.module';
     // Routes
     AppRoutingModule,
     // Child Routes
-    DashboardModule,// Dashboard Path
+    CheckoutModule,
     LandingModule,// Landing Path
   ],
   providers: [],
