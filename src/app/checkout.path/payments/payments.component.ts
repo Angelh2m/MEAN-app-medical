@@ -12,11 +12,16 @@ declare global { interface Window { stripe: any; } }
 export class PaymentsComponent implements OnInit {
 
   @ViewChild('someVar') el: ElementRef;
-
-  constructor(private rd: Renderer2) { }
+  home: boolean = true;
+  constructor(
+    private rd: Renderer2,
+    public router: Router,
+    private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     stripeInit(); // GLOBAL FUNCTION INIT STRIPE
+    this.home = this.activatedRoute.snapshot.data.title !== 'payments/cards';
+    console.warn('TRigger this ', this.home);
   }
 
   ngAfterViewInit() {

@@ -1,23 +1,24 @@
 <nav class="navigation navigation--{{theme}}">
-    <div class="navigation__container">
-        <div class="navigation__logo">
-            <a routerLink="">SurgeryCare.</a>
-        </div>
-        <div class="navigation__burger ">
-            <input class="navigation__button--white  " type="checkbox" placeholder="HERE" id="navi-toggle" />
-            <i class="icon-editor--align-justify-solid"></i>
-            <div class="navigation__background--purple" for="navi-toggle"></div>
-            <div class="navigation__items" for="navi-toggle">
-                <nav>
-                    <ul>
-                        <li [routerLink]="['/login']">Login</li>
-                        <li [routerLink]="['/payments']">payments</li>
-                        <li routerLink="dashboard">Dashboard</li>
-                        <a routerLink='payments' routerLinkActive="active">HERE</a>
-                        <li>Store</li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
+  <div class="navigation__container">
+    <div class="navigation__logo">
+      <a routerLink="">SurgeryCare.</a>
     </div>
+    {{theme}}
+    <div class="navigation__burger ">
+      <input class="navigation__button--white  " type="checkbox" placeholder="HERE" id="navi-toggle" />
+      <i class="navigation__burger--{{theme}} icon-editor--align-justify-solid "></i>
+      <div class="navigation__background--purple" for="navi-toggle"></div>
+      <div class="navigation__items" for="navi-toggle">
+        <nav>
+          <ul>
+            <li [routerLink]="['/login']">Login</li>
+            <li [routerLink]="['/payments']">payments</li>
+            <li routerLink="dashboard">Dashboard</li>
+            <a routerLink='payments' routerLinkActive="active">HERE</a>
+            <li>Store</li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
 </nav>

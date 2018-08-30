@@ -18,7 +18,7 @@ function stripeInit() {
                     lineHeight: '36px',
                     fontWeight: 300,
                     fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-                    fontSize: '16px',
+                    fontSize: '14px',
 
                     '::placeholder': {
                         color: '#8898AA',

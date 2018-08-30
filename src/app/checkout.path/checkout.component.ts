@@ -5,7 +5,7 @@ import { Title, Meta, MetaDefinition } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html'
+  templateUrl: './checkout.component.html'
 })
 export class DashboardComponent implements OnInit {
 

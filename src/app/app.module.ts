@@ -7,7 +7,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { ReusableComponets } from './reusable.components/reusable.componets.module';
-import { DashboardModule } from './dashboard.path/dashboard.module';
+import { DashboardModule } from './checkout.path/checkout.module';
+
 
 import { LandingComponent } from './landing.path/landing.component';
 import { LandingModule } from './landing.path/landing.module';

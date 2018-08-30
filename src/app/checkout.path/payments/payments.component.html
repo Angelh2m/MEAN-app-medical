@@ -1,0 +1,97 @@
+<router-outlet></router-outlet>
+
+<div class="payment">
+  <div>
+    <h2 class="subtitle">Summary</h2>
+  </div>
+
+  <div class="payment__container">
+    <div class="payment__items">
+      <span>Packet</span>
+      <strong>FullPackage</strong>
+    </div>
+    <div class="payment__items">
+      <span>Duration</span>
+      <strong>3 Months</strong>
+    </div>
+    <hr>
+    <div class="payment__items">
+      <span>Price</span>
+      <strong class="text--300">$45</strong>
+    </div>
+    <div class="payment__items">
+      <span>Discounts</span>
+      <strong class="text--300">3 Months</strong>
+    </div>
+    <hr>
+    <div class="payment__items">
+      <span class="text--green">Total</span>
+      <strong class="text--green">$45</strong>
+    </div>
+
+    <div class="payment__info">
+      <div>
+        <i class="icon-shield-check"></i>
+      </div>
+      <span>
+        Your payment is 100% secure. We
+        won’t store any personal or finnacial
+        information
+      </span>
+
+    </div>
+
+  </div>
+
+  <div>
+    <h2 class="subtitle">Payment mmethod</h2>
+  </div>
+</div>
+
+
+<div class="payment-card row">
+  <div class="payment-card__header">
+    <div class="payment-card__header--flex-one">
+      <!-- <input class="button--radio" type="radio"> -->
+      <span class="button--radio-selected"></span>
+      <label for="">Credit / Debit</label>
+    </div>
+    <div class="payment-card__header--flex-one">
+      <img src="https://i2.wp.com/devonmoving.com/wp-content/uploads/2015/01/credit-card-icons-png.png?ssl=1" alt="">
+    </div>
+  </div>
+  <div class="payment-card__container">
+    <form #someVar>
+      <label>
+        <input name="cardholder-name" class="field field--text is-empty" placeholder="Jane Doe" autocomplete="off"
+          (blur)="onSubmit()" />
+        <span>
+          <span>Name</span>
+        </span>
+      </label>
+      <label>
+        <input class="field field--text is-empty" type="tel" placeholder="(123) 456-7890" />
+        <span>
+          <span>Phone number</span>
+        </span>
+      </label>
+      <label>
+        <div id="card-element" class="field is-empty"></div>
+        <span>
+          <span>Credit or debit card</span>
+        </span>
+      </label>
+
+      <div class="outcome">
+        <div class="error" role="alert"></div>
+        <div class="success">
+          Success! Your Stripe token is
+          <span class="token"></span>
+        </div>
+      </div>
+
+      <button type="submit">Checkout <span class="icon-arrow-right"></span> </button>
+
+    </form>
+  </div>
+</div>

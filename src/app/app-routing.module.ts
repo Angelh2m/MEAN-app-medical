@@ -1,13 +1,14 @@
 // import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LandingComponent } from './landing.path/landing.component';
-import { DashboardComponent } from './dashboard.path/dashboard.component';
 import { LoginComponent } from './reusable.components/login/login.component';
 import { NgModule } from '@angular/core';
-import { PaymentsComponent } from 'src/app/dashboard.path/payments/payments.component';
 import { LoginGuardGuard } from './services/service.index';
-import { PaymentConfirmationComponent } from './dashboard.path/payment-confirmation/payment-confirmation.component';
-import { PlanSelectionComponent } from './dashboard.path/plan-selection/plan-selection.component';
+
+import { PaymentsComponent } from 'src/app/checkout.path/payments/payments.component';
+import { PaymentConfirmationComponent } from './checkout.path/payment-confirmation/payment-confirmation.component';
+import { DashboardComponent } from './checkout.path/checkout.component';
+import { PlanSelectionComponent } from './checkout.path/plan-selection/plan-selection.component';
 
 
 
@@ -17,23 +18,28 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent, data: { title: 'login' } },
   // { path: 'payments', component: PaymentsComponent, data: { title: 'payments' } },
   {
-    path: 'payments', component: PlanSelectionComponent, data: { title: 'payments' },
-
+    path: 'payments',
+    component: DashboardComponent,
+    data: { title: 'payments' },
     children: [
       {
-        path: 'selection',
-        component: PaymentsComponent,
+        path: '',
+        component: PlanSelectionComponent,
         canActivate: [LoginGuardGuard],
       },
       {
         path: 'card',
         component: PaymentsComponent,
         canActivate: [LoginGuardGuard],
-      },
-      {
-        path: 'payment-confirmation',
-        component: PaymentConfirmationComponent,
+        children: [
+          {
+            path: 'payment-confirmation',
+            component: PaymentConfirmationComponent,
+          }
+
+        ]
       }
+
     ]
   },
   { path: '**', component: LandingComponent }
