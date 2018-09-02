@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
 
   formTitle: string;
   form: FormGroup;
+  onSelectOption: boolean = false;
 
   constructor(public _loginService: LoginService) { }
 
@@ -34,7 +35,6 @@ export class LoginComponent implements OnInit {
     this.form.value.name = 'Angelh3m@gmail.com';
     this.form.value.password = '123';
 
-
     let user = new User(
       this.form.value.email,
       this.form.value.password
@@ -48,4 +48,7 @@ export class LoginComponent implements OnInit {
 
   }
 
+  onSelectLogin() {
+    this.onSelectOption = true;
+  }
 }

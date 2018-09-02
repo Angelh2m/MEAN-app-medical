@@ -268,12 +268,13 @@ table {
 .login {
   background-color: #32325d;
   padding: 5rem;
-  position: absolute;
+  position: fixed;
   z-index: 999;
   margin: 0 auto;
   left: 50%;
+  -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
-  margin-top: 14rem;
+  margin-top: 8rem;
   z-index: 99999;
 
   li {
