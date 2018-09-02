@@ -15,11 +15,22 @@
       display: inline-block;
       font-size: 3.5rem;
       color: $light-gray;
+
+      @include tablet {
+        font-size: 6rem;
+      }
     }
 
     a {
       color: $light-gray;
       font-size: .9rem;
+      font-weight: 200;
+
+      @include tablet {
+        font-size: 1.5rem;
+        margin-top: 1.5rem;
+        display: block;
+      }
     }
 
     // .col-1-of-3 {
@@ -240,6 +251,7 @@
       align-items: center;
       padding: 0rem 1rem;
       justify-content: space-around;
+      max-width: 15rem;
     }
 
     button:focus {

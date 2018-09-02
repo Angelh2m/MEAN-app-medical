@@ -3,13 +3,13 @@ $title-color: #32325d;
 
 .hero {
   h1 {
-    font-size: 6.5vw;
-    margin-bottom: 10%;
+    font-size: 5.5vw;
+    margin-bottom: 0rem;
     margin-top: 5%;
   }
 
   h2 {
-    font-size: 4.5vw;
+    font-size: 4vw;
     margin-bottom: 10%;
   }
 
@@ -17,7 +17,11 @@ $title-color: #32325d;
     position: absolute;
     top: 0;
     color: white;
+    margin: 0 auto;
     padding: 5rem 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
   }
 
   &__pills {
@@ -64,69 +68,6 @@ $title-color: #32325d;
   }
 }
 
-.button {
-  &--primary {
-    background: #39b54a;
-    padding: 1rem;
-    color: white;
-    border: solid 0px;
-    border-radius: 30px;
-  }
-
-  &--action {
-    background-color: #39b54a;
-    padding: 1.2rem;
-    margin-top: 2rem;
-    color: white;
-    font-weight: 600;
-    border: solid 0px;
-    border-radius: 10px;
-    transform: translateX(-50%);
-    margin-left: 50%;
-    width: 18rem;
-  }
-
-  &--login {
-    height: 4rem;
-    display: block;
-    width: 100%;
-    margin-bottom: 1rem;
-    border-radius: 5px;
-    background-color: white;
-    border: none;
-  }
-
-  &--form-submit {
-    background-color: #34d08c;
-    padding: 1rem;
-    margin-top: 3rem;
-    margin-left: 50%;
-    transform: translateX(-50%);
-    border: none;
-    border-radius: 5px;
-    color: white;
-    font-weight: 600;
-    letter-spacing: 1px;
-  }
-
-  &--radio-selected {
-    background-color: #34d08c;
-    padding: 0.1rem 1.1rem;
-    border-radius: 50%;
-    position: relative;
-
-    &:after {
-      background-color: white;
-      padding: .5rem;
-      border-radius: 50%;
-      content: '';
-      position: absolute;
-      left: .6rem;
-      top: .6rem;
-    }
-  }
-}
-
 // Header submenu
 .link--active {
   color: $light-blue !important;
@@ -141,43 +82,6 @@ $title-color: #32325d;
   font-size: 2rem;
 }
 
-// MISION
-.subtitle {
-  font-size: 2.5rem;
-  text-align: center;
-  color: $title-color;
-  margin-bottom: 1.5rem;
-  margin-top: 1.5rem;
-
-  &__small {
-    text-align: center;
-    font-size: 1.4rem;
-    // margin-bottom: 5rem;
-    display: block;
-  }
-
-  &--medium-blue {
-    color: #9cdbff;
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-}
-
-.text--small {
-  font-size: 1.3rem;
-  color: $text-color;
-  text-align: justify;
-  font-weight: 100;
-}
-
-.text--green {
-  color: $color-primary;
-}
-
-.text--300 {
-  font-weight: 300;
-}
-
 .appointment {
   margin: 3rem 0px;
 }
@@ -187,7 +91,7 @@ $title-color: #32325d;
     font-size: 2.5rem;
     text-align: center;
     color: #32325d;
-    margin-bottom: 1.5rem;
+    margin-bottom: 4.5rem;
     margin-top: 1.5rem;
   }
 
@@ -196,47 +100,51 @@ $title-color: #32325d;
   }
 }
 
-.membership {
-  background-image: linear-gradient(-60deg, #352e66, #404d97);
-  height: 200px;
-  border-radius: 10px;
-  color: white;
-  padding: 2rem;
+.our-mission {
+  font-size: 2rem;
+  color: #76879b;
+  text-align: center;
 
-  &__info {
-    width: 100%;
-    display: block;
-    font-size: .9rem;
-  }
-
-  &__price {
-    text-align: right;
-    font-size: 3rem;
-    display: block;
-    width: 100%;
-  }
-
-  &__package-name {
-    font-size: 2rem;
-  }
-
-  &__buy-button {
-    font-size: 1.5rem;
-    color: white;
-    background-color: #566bf1;
-    padding: .8rem;
-    border: solid 0px;
-    border-radius: 5px;
-    float: right;
-    margin-top: 15px;
+  @include tablet {
+    font-size: 3.3rem;
   }
 }
 
-.card-steps {
-  border: solid 1px #e6e6e6;
-  border-radius: 5px;
-  padding: 2rem;
-  margin: 3rem;
+// HOW IT WORKS
+.how-it-works {
+  @include tablet {
+    display: flex;
+  }
+
+  &__steps {
+    border: solid 1px #e6e6e6;
+    border-radius: 5px;
+    padding: 1.5rem;
+    margin-bottom: 2.5rem;
+    background-color: white;
+
+    @include tablet {
+      flex: 1;
+      margin: .5rem;
+    }
+  }
+}
+
+.why-our-service {
+  @include tablet {
+    display: flex;
+    align-items: center;
+    margin-top: 6rem;
+  }
+
+  &__svg {
+    // padding: 2rem;
+    border-radius: 5px;
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 4rem;
+    position: relative;
+  }
 }
 
 .card {
@@ -245,29 +153,22 @@ $title-color: #32325d;
 
 .card--featured {
   position: absolute;
-  top: 22%;
   background-color: white;
   width: 65vw;
   margin: 0 auto;
-  transform: translateX(-50%);
+  top: 50%;
   margin-left: 50%;
+  transform: translate(-50%, -50%);
   border-radius: 10px;
   padding: 15px 15px;
+
+  @include tablet {
+    width: 35vw;
+  }
 }
 
 .spacer {
   margin-bottom: 4.5rem !important;
-}
-
-.text--right {
-  text-align: right;
-  width: 100%;
-}
-
-.text--center {
-  text-align: center;
-  width: 100%;
-  display: block;
 }
 
 .text--blue {
@@ -308,7 +209,7 @@ $title-color: #32325d;
       height: 0;
       height: 0;
       padding: 0;
-      padding-left: 1rem;
+      padding: 1rem 0rem;
       max-height: 0;
       transition: max-height .50s ease-out, padding 0s ease-out;
       // transition: max-height 2s;
@@ -319,7 +220,7 @@ $title-color: #32325d;
   &--is-active {
     #{$c}__wrap {
       max-height: 200px;
-      padding: 1rem;
+      padding: 1rem 0rem;
       height: auto;
       max-height: auto;
       transition: max-height 1.15s ease-out;
@@ -339,33 +240,41 @@ footer {
   }
 }
 
+// .doctors-table{}
 table {
   width: 100%;
-  background-color: #f7f9fa;
+  background-color: #ffffff;
   padding: 3rem;
   margin-top: 3rem;
 
   td {
     font-size: 1.2rem;
   }
-}
 
-tr {
-  border-bottom: solid 1px rgb(238, 238, 238);
-  height: 40px;
-  display: block;
-  line-height: 3;
-  position: relative;
+  tr {
+    border-bottom: solid 1px rgb(238, 238, 238);
+    height: 40px;
+    display: block;
+    line-height: 3;
+    position: relative;
 
-  th {
-    color: black;
-    text-align: left;
+    th {
+      color: black;
+      text-align: left;
+    }
   }
 }
 
 .login {
   background-color: #32325d;
   padding: 5rem;
+  position: absolute;
+  z-index: 999;
+  margin: 0 auto;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 14rem;
+  z-index: 99999;
 
   li {
     cursor: pointer;

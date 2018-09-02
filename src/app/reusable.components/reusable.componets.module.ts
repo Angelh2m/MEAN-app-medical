@@ -8,6 +8,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginInterceptor } from '../services/login/login.interceptor';
 import { APP_MULTI_ROUTES } from './reusable.routing.module';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   imports: [
@@ -22,11 +23,14 @@ import { APP_MULTI_ROUTES } from './reusable.routing.module';
   ],
   declarations: [
     HeaderComponent,
-    LoginComponent
+    LoginComponent,
+    FooterComponent
+
   ],
   exports: [
     HeaderComponent,
     LoginComponent,
+    FooterComponent,
   ],
   providers: [
     {

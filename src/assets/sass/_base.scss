@@ -1,41 +1,60 @@
 *,
 *::after,
 *::before {
-    margin: 0;
-    padding: 0;
-    box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
 }
 
 html {
-    // This defines what 1rem is
-    font-size: 62.5%;
+  // This defines what 1rem is
+  font-size: 62.5%;
 }
 
 body {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1.7;
-    color: $color-grey-dark;
-    padding: $container-padding $container-padding 0;
-    padding-top: 0;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+  color: $color-black;
+  padding: $container-padding $container-padding 0;
+  padding-top: 0;
+  overflow-x: hidden;
 }
 
-p{
-    font-size: 1.5rem;
-    color: #525f7f;
-    font-weight: 100;
-    margin-top: 1.5rem;
+p {
+  font-size: 1.5rem;
+  color: #525f7f;
+  font-weight: 100;
+  margin-top: 1.5rem;
+}
+
+i {
+  font-size: 1.5rem;
 }
 
 img {
-    width: 100%;
+  width: 100%;
 }
 
-a{
-    text-decoration: none;
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+button {
+  border: solid 0;
+}
+
+section {
+  margin-bottom: 6rem;
+  display: block;
+  position: relative;
 }

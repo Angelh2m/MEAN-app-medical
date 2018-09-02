@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-
+@import "assets/sass/media-queries.scss";
 @import "assets/sass/variables.scss";
 @import "assets/sass/mixins.scss";
 @import "assets/sass/grid.scss";
@@ -8,3 +8,9 @@
 @import "assets/sass/hero.scss";
 @import "assets/sass/landing.scss";
 @import "assets/sass/payments.scss";
+@import "assets/sass/dashboard.scss";
+@import "assets/sass/text-format.scss";
+@import "assets/sass/buttons.scss";
+@import "assets/sass/membership.scss";
+@import "assets/sass/confirmation.scss";
+@import "assets/sass/navigation.scss";

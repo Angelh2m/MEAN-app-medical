@@ -1,24 +1,34 @@
-<section class="container">
+<section class="container row--spacer">
 
   <div>
     <h2 class="subtitle">Select your plan</h2>
   </div>
 
-  <div *ngIf="home" class="row">
-    <div>
-      <div class="membership  ">
-        <small class="membership__info">Valid only for one surgery</small>
-        <strong class="membership__price">$45</strong>
-        <h4 class="membership__package-name">Personal Support</h4>
-        <button class="membership__buy-button">Buy Now</button>
+  <div *ngIf="home" class="">
+    <div class="row ">
+      <div class="col-2-of-4">
+        <div class="membership row ">
+          <small class=" membership__info">Valid only for one surgery</small>
+          <div class="membership__flex">
+            <h4 class="membership__package-name">Personal Support</h4>
+            <strong class="membership__price">$45</strong>
+          </div>
+          <button class="membership__buy-button">Buy Now</button>
+        </div>
+      </div>
+
+      <div class="col-2-of-4">
+        <div class="membership membership--blue row ">
+          <small class=" membership__info">Valid only for one surgery</small>
+          <div class="membership__flex">
+            <h4 class="membership__package-name">Personal Support</h4>
+            <strong class="membership__price">$45</strong>
+          </div>
+          <button class="membership__buy-button">Buy Now</button>
+        </div>
       </div>
     </div>
+
   </div>
 
 </section>
-
-
-
-<p>
-  payments works! HEADER
-</p>
