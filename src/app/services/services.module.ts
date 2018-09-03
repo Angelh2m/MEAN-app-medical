@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoginService } from './login/login.service';
 import { LoginGuardGuard } from './service.index';
+import { UserService } from './user/user.service';
 
 
 @NgModule({
@@ -10,7 +11,8 @@ import { LoginGuardGuard } from './service.index';
   ],
   providers: [
     LoginService,
-    LoginGuardGuard
+    LoginGuardGuard,
+    UserService
 
   ],
   declarations: []

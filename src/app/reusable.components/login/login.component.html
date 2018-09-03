@@ -6,10 +6,7 @@
   </div>
   <h3 class="subtitle--medium-blue">{{formTitle}}</h3>
   <form class="md-form" *ngIf="formTitle" (ngSubmit)="onFormSumbit()">
-    <input type="text" placeholder="Name">
-    <input type="text" placeholder="Email">
-    <input type="text" placeholder="password">
-    <input type="text" placeholder="Confirm password">
+    <input *ngFor="let field of fields" (blur)="onType($event)" type="{{field.type}}" name="{{field.name}}" placeholder="{{field.placeholder}}">
     <button type="submit" class="button--form-submit">SUBMIT</button>
   </form>
   <ul class="login__options" (click)="onSelectLogin()">

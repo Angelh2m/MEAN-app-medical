@@ -19,6 +19,14 @@
     line-height: 2.5;
   }
 
+  &__burger {
+    i {
+      font-size: 1.5rem;
+      margin-top: 2rem;
+      display: inline-block;
+    }
+  }
+
   &__logo {
     font-size: 2rem;
     font-weight: 600;
@@ -83,6 +91,14 @@
     }
   }
 
+  &__avatar {
+    border-radius: 50%;
+    width: 34px;
+    position: absolute;
+    right: 6rem;
+    top: 29%;
+  }
+
   // Input button
   &__button {
     &--white {
@@ -95,6 +111,7 @@
       height: 2.5rem;
       cursor: pointer;
       display: inline-block;
+      margin-top: 1.5rem
     }
   }
 

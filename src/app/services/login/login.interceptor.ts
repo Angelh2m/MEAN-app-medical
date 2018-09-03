@@ -19,7 +19,7 @@ export class LoginInterceptor implements HttpInterceptor {
             headers,
 
         })
-        console.warn(newRequest);
+        console.warn('INTERCEPTOR ', newRequest);
         // console.log(newRequest.body);
 
         return next.handle(newRequest);

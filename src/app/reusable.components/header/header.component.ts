@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
+import { UserService } from '../../services/user/user.service';
 
 @Component({
   selector: 'app-header',
@@ -11,10 +12,15 @@ export class HeaderComponent implements OnInit {
   isActive: boolean = false;
   showModal: boolean = false;
 
-  constructor(private el: ElementRef) { }
+  constructor(
+    private el: ElementRef,
+    public _userService: UserService
+  ) { }
 
   ngOnInit() {
     // console.log(this.theme);
+    console.log(this._userService.getUserData().avatar);
+
   }
   toggle() {
     this.isActive = !this.isActive;
@@ -30,7 +36,6 @@ export class HeaderComponent implements OnInit {
   closeModal() {
     this.showModal = !this.showModal;
     console.log(this.showModal);
-
   }
 
 }
