@@ -6,11 +6,14 @@ import { AppointmentsComponent } from './appointments/appointments.component';
 import { RecomendationsComponent } from './recomendations/recomendations.component';
 import { DASHBOARD_ROUTES } from './patients-dashboard-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
 
 @NgModule({
   imports: [
     CommonModule,
-
+    ReactiveFormsModule,
+    FormsModule
   ],
   declarations: [QuestionsComponent, PaymentHistoryComponent, AppointmentsComponent, RecomendationsComponent, DashboardComponent]
 })

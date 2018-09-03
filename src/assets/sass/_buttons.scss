@@ -95,4 +95,22 @@
     margin: 1.5rem 0rem;
     color: white;
   }
+
+  &--edit {
+    background-color: #373761;
+    color: white;
+    padding: 1rem;
+    position: absolute;
+    right: 0;
+    font-size: 1rem;
+  }
+
+  &--save {
+    background-color: #373761;
+    margin-top: 1.5rem;
+    color: white;
+    text-align: center;
+    line-height: 2.5;
+    width: 100%;
+  }
 }

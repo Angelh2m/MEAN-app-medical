@@ -5,16 +5,16 @@
 
   <div class="col-2-of-4">
     <div class="card">
-      <h3 class="card__user">John Doe</h3>
+      <h3 class="card__user">{{user.info[0].firstName}} {{user.info[0].lastName}}</h3>
       <div class="card__user--initials">
         JD
       </div>
-      <h3 class="card__location">California</h3>
+      <h3 class="card__location">{{user.info[0].state}}, {{user.info[0].city}} </h3>
       <div class="card progress">
-        <div class="progress__bar">
-
+        <div class="progress__bar-background ">
+          <div class="progress__bar" [style.width.%]="percentage"></div>
         </div>
-        <span class="progress__status">100% Complete</span>
+        <span class="progress__status">{{ percentage }}% Complete</span>
       </div>
     </div>
 
@@ -22,24 +22,55 @@
 
   <div class="col-2-of-4">
     <div class="card">
+      <span class="button--edit" (click)="toggleEdit()">Edit</span>
       <h2 class="subtitle--left-small  ">Your information:</h2>
-      <div>
-        <span class="text--small ">Name:</span>
-        <p>John Doe</p>
+      <div *ngIf='!isEdit'>
+        <div>
+          <span class="text--small ">Name:</span>
+          <p>{{user.info[0].firstName}} {{user.info[0].lastName}}</p>
+        </div>
+        <div>
+          <span class="text--small ">Phone Number:</span>
+          <p>{{user.info[0].phoneNumber}}</p>
+        </div>
+        <div>
+          <span class="text--small ">Address:</span>
+          <p>{{user.info[0].address}}</p>
+        </div>
+        <div>
+          <span class="text--small ">E-mail:</span>
+          <p>{{user.info[0].email}}</p>
+        </div>
       </div>
-      <div>
-        <span class="text--small ">Phone Number:</span>
-        <p>(442) 241 1111</p>
-      </div>
-      <div>
-        <span class="text--small ">Address:</span>
-        <p>75 Hawthorse St Booklyn Ny</p>
-      </div>
-      <div>
-        <span class="text--small ">E-mail:</span>
-        <p>user@gmail.com</p>
-      </div>
+      <hr>
+      <form [formGroup]="form" (ngSubmit)="onSaveData()" class="form-primary" *ngIf='isEdit'>
+        <div class="form-primary__flex">
+          <div>
+            <span class="text--small ">Name:</span>
+            <input class="form-primary__input" formControlName="firstName" type="text" placeholder="form.firstName">
+          </div>
+          <div>
+            <span class="text--small ">Last Name:</span>
+            <input class="form-primary__input" formControlName="lastName" type="text" placeholder="{{user.info[0].lastName}}">
+          </div>
+        </div>
+        <div>
+          <span class="text--small ">Phone number:</span>
+          <input class="form-primary__input" formControlName="phoneNumber" type="text" placeholder="{{user.info[0].phoneNumber}}">
+        </div>
+        <div>
+          <span class="text--small ">Address:</span>
+          <input class="form-primary__input" type="text" formControlName="address" placeholder="{{user.info[0].address}}">
+        </div>
+        <div>
+          <span class="text--small ">E-mail:</span>
+          <input class="form-primary__input" type="text" formControlName="email" placeholder="{{user.info[0].email}}">
+        </div>
+
+        <button type="submit" class="button--save">Save</button>
+      </form>
     </div>
+
 
   </div>
 
