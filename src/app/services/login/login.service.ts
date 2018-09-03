@@ -15,7 +15,8 @@ export class LoginService {
   constructor(private _http: HttpClient) { }
 
   loginUser(user) {
-    let url = `${URL_ENDPOINTS.aws}/login`;
+    // let url = `${URL_ENDPOINTS.aws}/login`;
+    let url = `api/login`;
 
     // email: Angelh3m@gmail.com
     // pass: 123

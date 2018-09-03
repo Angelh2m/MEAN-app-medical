@@ -8,9 +8,9 @@ export class LoginInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
         const headers = new HttpHeaders({
-            'access-control-expose-headers': 'x-total-count',
-            'Content-Type': 'application/x-www-form-urlencoded',
-            'Cache-Control': 'no-cache, no-store, must-revalidate',
+            // 'access-control-expose-headers': 'x-total-count',
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+            // 'Cache-Control': 'no-cache, no-store, must-revalidate',
             // 'Pragma': 'no-cache',
             // 'Expires': '0',
         });
