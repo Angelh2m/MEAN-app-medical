@@ -45,6 +45,8 @@ export class UserService {
     this.userTokenData = jwt_decode(this.getToken());
 
     if (this.usersPayload.email == '') {
+      console.warn('FETCH ');
+
       return this._http.get('/api/profile').pipe(
         map((el: any) => {
           this.usersPayload = { ...el.user }
@@ -63,7 +65,6 @@ export class UserService {
     }
   }
 
-
   updateUserData(requestUserUpdate) {
 
     const body = new HttpParams()
@@ -77,6 +78,22 @@ export class UserService {
         return el
       })
     )
+  }
+
+  askQuestion(question) {
+    const body = new HttpParams()
+      .set('subject', question.subject)
+      .set('content', question.content)
+
+    return this._http.post('/api/questions', body).pipe(
+      map((el: any) => {
+        // if (el.user !== undefined) {
+        //   this.usersPayload = { ...el.user }
+        // }
+        return el
+      })
+    )
+
   }
 
   onLogout() {

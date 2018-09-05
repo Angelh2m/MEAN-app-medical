@@ -19,10 +19,9 @@
         </div>
       </div>
       <div class="payment-card__container">
-        <form #someVar>
+        <form #refForm>
           <label>
-            <input name="cardholder-name" class="field field--text is-empty" placeholder="Jane Doe" autocomplete="off"
-              (blur)="onSubmit()" />
+            <input name="cardholder-name" class="field field--text is-empty" placeholder="Jane Doe" autocomplete="off" />
             <span>
               <span>Name</span>
             </span>
@@ -40,12 +39,12 @@
             </span>
           </label>
 
+          <input style="display: none" type="text">
           <div class="outcome">
+
             <div class="error" role="alert"></div>
-            <div class="success">
-              Success! Your Stripe token is
-              <span class="token"></span>
-            </div>
+
+            <div class="success"><span class="token"></span></div>
           </div>
 
           <button type="submit">Checkout <span class="icon-arrow-right"></span> </button>

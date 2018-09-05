@@ -11,7 +11,7 @@ declare global { interface Window { stripe: any; } }
 
 export class PaymentsComponent implements OnInit {
 
-  @ViewChild('someVar') el: ElementRef;
+  @ViewChild('refForm') el: ElementRef;
   home: boolean = true;
   constructor(
     private rd: Renderer2,
@@ -32,7 +32,9 @@ export class PaymentsComponent implements OnInit {
 
   onSubmit() {
     console.log('Sumitting');
-    this.el.nativeElement[4].click()
+    console.log(this.el.nativeElement[5]);
+
+    this.el.nativeElement[5].click()
 
   }
 }
