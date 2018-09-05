@@ -3,6 +3,9 @@
     "target": "http://localhost:6000/",
     "logLevel": "debug",
     "secure": false,
-    "changeOrigin": true
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api": "http://localhost:6000/api/"
+    }
   }
 }

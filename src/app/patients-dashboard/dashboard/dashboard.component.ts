@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { map } from "rxjs/operators";
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UserService } from '../../services/user/user.service';
+import { UserObj } from '../../utils/interfaces/user';
 
 // type ArrObj = Object[];
 type ArrObj = any[] | any;
@@ -13,46 +15,34 @@ type ArrObj = any[] | any;
 
 export class DashboardComponent implements OnInit {
 
-  user: ArrObj = {
-    info: [
-      {
-        firstName: 'Robert', lastName: 'Doe', phoneNumber: '(442) 232 1111',
-        address: '75 Hawthorne St', email: 'user@gmail.com',
-        city: 'Dallas', state: 'Texas',
-      }
-    ],
-    medical: [
-      { complete: false },
-      {
-        questions: [
-          { 'Do you smoke?': true },
-          { 'Do you excersise': true }
-        ]
-      }
-    ],
-    payments: [
-      { membership: '3 moth plan', ammoun: '$155', purchased: 'July,10,2018', expires: 'Sep,10,2018' }
-    ],
-    questions: [
-      {
-        title: 'Question title', question: 'The question???', questionDate: 'June 13 2018',
-        answer: 'The Answer', answerDate: '', responded: false,
-      }
-    ],
-    appointments: [
-      { sugery: 'Surgery Name', doctor: "Doctor's Name", specialty: 'Ortophedic', office: 'Location', date: 'DateScheduled' }
-    ]
+  usersPayload = this._userService.usersPayload;
 
-  }
 
   percentage: Number = 0;
   isEdit = false;
   form: FormGroup;
 
-  constructor() { }
+  constructor(private _userService: UserService) {
+    this.onComponentLoad();
+  }
 
-  ngOnInit() {
-    this.progress();
+  toggleEdit() { this.isEdit = !this.isEdit; }
+
+  ngOnInit() { this.progress(); }
+
+  onComponentLoad() {
+    // FETCH FOR THE USER and GET THE DATA
+    this._userService.fetchUserProfile().subscribe(
+      (res: any) => {
+        if (res.info) {
+          this.usersPayload = {
+            ...res
+          }
+        }
+        console.warn("FORM COMPONENT");
+      }, (err) => console.log(err.user)
+    );
+
     this.form = new FormGroup({
       firstName: new FormControl(null, Validators.required),
       lastName: new FormControl(null, Validators.required),
@@ -63,42 +53,57 @@ export class DashboardComponent implements OnInit {
       state: new FormControl(null, Validators.required),
     });
 
-    this.form.setValue({
-      firstName: this.user.info[0].firstName,
-      lastName: this.user.info[0].lastName,
-      phoneNumber: this.user.info[0].phoneNumber,
-      address: this.user.info[0].address,
-      email: this.user.info[0].email,
-      city: this.user.info[0].city,
-      state: this.user.info[0].state,
-    })
+  }
+
+
+  test() {
+    this._userService.getUserDataTest();
   }
 
   progress() {
     let filled = 0;
     let requiredFields = 0;
 
-    Object.keys(this.user.info[0]).map((el, i) => {
-      requiredFields += 1;
-      if (this.user.info[0][el].length >= 1) {
-        filled += 1;
-      }
-    })
+    // Object.keys(this.user.info[0]).map((el, i) => {
+    //   requiredFields += 1;
+    //   if (this.user.info[0][el].length >= 1) {
+    //     filled += 1;
+    //   }
+    // })
 
     this.percentage = Math.floor((filled / requiredFields) * 100);
   }
 
-  toggleEdit() {
-    this.isEdit = !this.isEdit;
+  onLogout() {
+    this._userService.onLogout();
   }
 
+
   onSaveData() {
-    console.log(this.form.value);
-    this.user.info[0] = {
-      ...this.form.value
+
+    this.usersPayload = {
+      // Route differently if the email is different
+      // Grab all from the current form
+      info: {
+        ...this.form.value,
+      },
     }
 
-    this.progress();
+    console.warn("CHETK DATa", this.usersPayload);
+
+
+    this._userService.updateUserData(this.usersPayload.info)
+      .subscribe(
+        (res: any) => {
+          this.usersPayload = {
+            info: {
+              ...res.user.info
+            }
+          }
+          this.progress();
+        }, (err) => console.log(err)
+      );
+
   }
 
 }

@@ -15,12 +15,7 @@ export class LoginComponent implements OnInit {
   formTitle: string;
   form: FormGroup;
   onSelectOption: boolean = false;
-
-  fields = [
-    { type: 'text', placeholder: 'Email', name: 'email' },
-    { type: 'text', placeholder: 'Password', name: 'password' }
-  ];
-
+  fields = [];
   payload: any = {
     name: '',
     email: '',
@@ -30,7 +25,6 @@ export class LoginComponent implements OnInit {
 
   constructor(
     public _loginService: LoginService,
-    public _registerUserService: RegisterUserService,
     private _user: UserService
   ) { }
 
@@ -38,6 +32,7 @@ export class LoginComponent implements OnInit {
 
   onChangeState(state) {
     this.formTitle = state.replace();
+
     switch (state) {
       case 'Sign-in':
         this.fields = [
@@ -64,7 +59,6 @@ export class LoginComponent implements OnInit {
         break;
     }
 
-
     this.form = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email]),
       name: new FormControl(null, Validators.required),
@@ -79,35 +73,54 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  willReset() {
+    this.onChangeState(this.formTitle);
+    this.payload = {};
+  }
 
   onFormSumbit() {
-    let user: any;
 
     switch (this.formTitle) {
       case 'Sign-in':
 
-        user = {
+        let user = {
           email: this.payload.email,
-          password: this.payload.password
+          password: this.payload.password,
         };
+
+        this.willReset();
         this.onLoginUser(user)
 
         break;
 
       case 'Recover':
 
+        let userEmail = {
+          email: this.payload.email,
+        }
+
+        this.willReset();
+        this.onResetPassword(userEmail)
+
         break;
 
       case 'Create-an-account':
 
-        user = {
-          name: this.payload.name,
+
+        const info = {
           email: this.payload.email,
+          name: this.payload.name,
           password: this.payload.password,
           password2: this.payload.password2
-        };
+        }
 
-        this.onRegisterUser(user);
+        if (info.password !== info.password2 || !info.password || !info.password2) {
+          console.warn('Pass not the same');
+          return
+        }
+
+        this.willReset();
+        this.onRegisterUser(info);
 
         break;
 
@@ -119,7 +132,6 @@ export class LoginComponent implements OnInit {
   onLoginUser(user) {
     this._loginService.loginUser(user)
       .subscribe((res: any) => {
-
         this._user.setToken(res.token)
         console.warn(res.token);
       }),
@@ -127,11 +139,23 @@ export class LoginComponent implements OnInit {
   }
 
   onRegisterUser(user) {
-    this._registerUserService.registerUser(user)
+    this._loginService.registerUser(user)
       .subscribe((res: any) => {
         console.warn(res);
       }),
-      (err => console.log(err))
+      (err => {
+        console.log(err)
+      })
+  }
+
+  onResetPassword(user) {
+    this._loginService.resetPassword(user)
+      .subscribe((res: any) => {
+        console.warn(res);
+      }),
+      (err => {
+        console.log(err)
+      })
   }
 
   onSelectLogin() {

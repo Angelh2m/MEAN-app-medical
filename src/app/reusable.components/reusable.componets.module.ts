@@ -6,7 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 // HTTP
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { LoginInterceptor } from '../services/interceptor/login.interceptor';
+import { LoginInterceptor } from '../services/interceptor/token.interceptor';
 import { APP_MULTI_ROUTES } from './reusable.routing.module';
 import { FooterComponent } from './footer/footer.component';
 

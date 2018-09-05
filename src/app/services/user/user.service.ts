@@ -1,27 +1,89 @@
 import { Injectable } from '@angular/core';
 import * as jwt_decode from "jwt-decode";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
+import { map } from 'rxjs/operators';
+import { Observable } from "rxjs"
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  token: string = '';
-  userData: object;
+  userToken: string = '';
+  userTokenData: object;
 
-  constructor() { }
+  public usersPayload: any = {
+    email: '',
+    info: {
+      firstName: '',
+      lastName: '',
+      phoneNumber: '',
+      address: '',
+      email: '',
+      city: '',
+      state: '',
+    }
+  };
+
+  constructor(private _http: HttpClient) { }
 
   setToken(token) {
     localStorage.setItem('Token', JSON.stringify(token))
   }
   getToken() {
-    return this.token = localStorage.getItem('Token');
+    return this.userToken = localStorage.getItem('Token') ? localStorage.getItem('Token') : null;
   }
   isLogged() {
     return (this.getToken().length > 35) ? true : false;
   }
-  getUserData() {
-    return this.userData = jwt_decode(this.getToken());
+  getUserDataTest() {
+    console.log('ANy data?', this.usersPayload);
+    return this.usersPayload;
+  }
+
+  fetchUserProfile() {
+    this.userTokenData = jwt_decode(this.getToken());
+
+    if (this.usersPayload.email == '') {
+      return this._http.get('/api/profile').pipe(
+        map((el: any) => {
+          this.usersPayload = { ...el.user }
+          console.warn('API CALL FORM SERVICE', el.user);
+          return el.user
+        })
+      )
+    } else {
+
+      const simpleObservable = new Observable((observer) => {
+        observer.next({ ...this.usersPayload })
+        observer.complete()
+      })
+
+      return simpleObservable
+    }
+  }
+
+
+  updateUserData(requestUserUpdate) {
+
+    const body = new HttpParams()
+      .set('updateUserData', JSON.stringify(requestUserUpdate))
+
+    return this._http.put('/api/user', body).pipe(
+      map((el: any) => {
+        if (el.user !== undefined) {
+          this.usersPayload = { ...el.user }
+        }
+        return el
+      })
+    )
+  }
+
+  onLogout() {
+    localStorage.removeItem('Token');
+    this.userToken = '';
+    this.userTokenData = null;
+    this.usersPayload = null;
   }
 
 }

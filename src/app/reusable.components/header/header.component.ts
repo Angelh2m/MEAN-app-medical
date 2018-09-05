@@ -19,7 +19,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     // console.log(this.theme);
-    console.log(this._userService.getUserData().avatar);
+    // console.log(this._userService.getUserData().avatar);
 
   }
   toggle() {

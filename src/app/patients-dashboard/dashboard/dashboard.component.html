@@ -1,15 +1,19 @@
 <h2 class="subtitle--left">Dashboard</h2>
 <hr>
 
-<div class="row">
+<button (click)="onLogout()"> LOGOUT </button>
+<hr>
+<button (click)="test()">Check Service Data</button>
+
+<div class=" row">
 
   <div class="col-2-of-4">
     <div class="card">
-      <h3 class="card__user">{{user.info[0].firstName}} {{user.info[0].lastName}}</h3>
+      <h3 class="card__user">{{usersPayload.info.firstName}} {{usersPayload.info.lastName}}</h3>
       <div class="card__user--initials">
         JD
       </div>
-      <h3 class="card__location">{{user.info[0].state}}, {{user.info[0].city}} </h3>
+      <h3 class="card__location">{{usersPayload.info.state}}, {{usersPayload.info.city}} </h3>
       <div class="card progress">
         <div class="progress__bar-background ">
           <div class="progress__bar" [style.width.%]="percentage"></div>
@@ -27,19 +31,23 @@
       <div *ngIf='!isEdit'>
         <div>
           <span class="text--small ">Name:</span>
-          <p>{{user.info[0].firstName}} {{user.info[0].lastName}}</p>
+          <p>{{usersPayload.info.firstName}} {{usersPayload.info.lastName}}</p>
         </div>
         <div>
           <span class="text--small ">Phone Number:</span>
-          <p>{{user.info[0].phoneNumber}}</p>
+          <p>{{usersPayload.info.phoneNumber}}</p>
         </div>
         <div>
           <span class="text--small ">Address:</span>
-          <p>{{user.info[0].address}}</p>
+          <p>{{usersPayload.info.address}}</p>
         </div>
         <div>
-          <span class="text--small ">E-mail:</span>
-          <p>{{user.info[0].email}}</p>
+          <span class="text--small ">City:</span>
+          <p>{{usersPayload.info.city}}</p>
+        </div>
+        <div>
+          <span class="text--small ">State:</span>
+          <p>{{usersPayload.info.state}}</p>
         </div>
       </div>
       <hr>
@@ -47,24 +55,28 @@
         <div class="form-primary__flex">
           <div>
             <span class="text--small ">Name:</span>
-            <input class="form-primary__input" formControlName="firstName" type="text" placeholder="form.firstName">
+            <input class="form-primary__input" formControlName="firstName" type="text" placeholder="{{usersPayload.info.firstName}}">
           </div>
           <div>
             <span class="text--small ">Last Name:</span>
-            <input class="form-primary__input" formControlName="lastName" type="text" placeholder="{{user.info[0].lastName}}">
+            <input class="form-primary__input" formControlName="lastName" type="text" placeholder="{{usersPayload.info.lastName}}">
           </div>
         </div>
         <div>
           <span class="text--small ">Phone number:</span>
-          <input class="form-primary__input" formControlName="phoneNumber" type="text" placeholder="{{user.info[0].phoneNumber}}">
+          <input class="form-primary__input" formControlName="phoneNumber" type="text" placeholder="{{usersPayload.info.phoneNumber}}">
         </div>
         <div>
           <span class="text--small ">Address:</span>
-          <input class="form-primary__input" type="text" formControlName="address" placeholder="{{user.info[0].address}}">
+          <input class="form-primary__input" type="text" formControlName="address" placeholder="{{usersPayload.info.address}}">
         </div>
         <div>
-          <span class="text--small ">E-mail:</span>
-          <input class="form-primary__input" type="text" formControlName="email" placeholder="{{user.info[0].email}}">
+          <span class="text--small ">City:</span>
+          <input class="form-primary__input" type="text" formControlName="city" placeholder="{{usersPayload.info.city}}">
+        </div>
+        <div>
+          <span class="text--small ">State:</span>
+          <input class="form-primary__input" type="text" formControlName="state" placeholder="{{usersPayload.info.state}}">
         </div>
 
         <button type="submit" class="button--save">Save</button>

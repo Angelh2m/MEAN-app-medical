@@ -7,6 +7,7 @@ import { RecomendationsComponent } from './recomendations/recomendations.compone
 import { DASHBOARD_ROUTES } from './patients-dashboard-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { UserService } from '../services/user/user.service';
 
 
 @NgModule({
@@ -15,6 +16,11 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     ReactiveFormsModule,
     FormsModule
   ],
-  declarations: [QuestionsComponent, PaymentHistoryComponent, AppointmentsComponent, RecomendationsComponent, DashboardComponent]
+  providers: [UserService],
+  declarations: [QuestionsComponent,
+    PaymentHistoryComponent,
+    AppointmentsComponent,
+    RecomendationsComponent,
+    DashboardComponent]
 })
 export class PatientsDashboardModule { }

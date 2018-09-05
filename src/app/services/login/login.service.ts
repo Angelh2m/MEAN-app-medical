@@ -15,15 +15,33 @@ export class LoginService {
   constructor(private _http: HttpClient) { }
 
   loginUser(user) {
-    // let url = `${URL_ENDPOINTS.aws}/login`;
-    let url = `api/login`;
-
-    // email: Angelh3m@gmail.com
-    // pass: 123
+    // let url = `${URL_ENDPOINTS.aws1}/login`;
+    let url = `/api/login`;
     const body = new HttpParams()
       .set('email', user.email)
       .set('password', user.password)
 
     return this._http.post(url, body)
   }
+
+  registerUser(user) {
+    // let url = `${URL_ENDPOINTS.aws}/register`;
+    let url = `/api/register`;
+    const body = new HttpParams()
+      .set('name', user.name)
+      .set('email', user.email)
+      .set('password', user.password)
+
+    return this._http.post(url, body)
+  }
+
+  resetPassword(user) {
+    // let url = `${URL_ENDPOINTS.aws}/register`;
+    let url = `/api/forgot-password`;
+    const body = new HttpParams()
+      .set('email', user.email)
+
+    return this._http.post(url, body)
+  }
+
 }
