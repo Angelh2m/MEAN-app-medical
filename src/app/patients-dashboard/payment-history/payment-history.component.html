@@ -1,4 +1,4 @@
-<h2 class="subtitle--left">Conversation History</h2>
+<h2 class="subtitle--left">Payment History</h2>
 <hr>
 
 <table class="conversation-table">
@@ -8,10 +8,16 @@
     <th class="text--right">EXPIRES</th>
     <th class="text--right">BALANCE</th>
   </tr>
-  <tr class="conversation-table--cell">
+  <tr class="conversation-table--cell" *ngFor="let payment  of payments">
+    <td>{{payment.plan}} </td>
+    <td>{{payment.date | date: 'dd/MM/yyyy' }} </td>
+    <td>{{payment.expires}}</td>
+    <td>${{payment.amount }}</td>
+  </tr>
+  <!-- <tr class="conversation-table--cell" *ngFor="let payment  of payments">
     <td>2 Months </td>
     <td>July 10th 2018 </td>
     <td>December 20th 2018</td>
     <td>$8,000</td>
-  </tr>
+  </tr> -->
 </table>

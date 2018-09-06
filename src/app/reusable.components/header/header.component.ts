@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { UserService } from '../../services/user/user.service';
+import { PaymentsService } from '../../services/payments/payments.service';
 
 @Component({
   selector: 'app-header',
@@ -11,31 +12,32 @@ export class HeaderComponent implements OnInit {
   @ViewChild("burger", { read: ElementRef }) burger: ElementRef;
   isActive: boolean = false;
   showModal: boolean = false;
+  usersAvatar: string;
 
   constructor(
     private el: ElementRef,
-    public _userService: UserService
+    public _userService: UserService,
+    private _payments: PaymentsService
   ) { }
 
   ngOnInit() {
-    // console.log(this.theme);
-    // console.log(this._userService.getUserData().avatar);
-
+    this._userService.avatarObsv
+      .subscribe(avatar => {
+        this.usersAvatar = avatar
+      })
   }
+
   toggle() {
     this.isActive = !this.isActive;
-    console.log(this.isActive);
   }
 
   loginModal() {
-    console.log('Modal Open');
     this.showModal = !this.showModal;
-    console.log(this.burger.nativeElement);
-    console.log(this.burger.nativeElement.checked = false);
+    this.burger.nativeElement.checked = false
+    this.isActive = !this.isActive;
   }
   closeModal() {
     this.showModal = !this.showModal;
-    console.log(this.showModal);
   }
 
 }

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { LoginService } from './login/login.service';
 import { LoginGuardGuard } from './service.index';
 import { UserService } from './user/user.service';
+import { PaymentsService } from './payments/payments.service';
 
 
 @NgModule({
@@ -12,8 +13,8 @@ import { UserService } from './user/user.service';
   providers: [
     LoginService,
     LoginGuardGuard,
-    UserService
-
+    UserService,
+    PaymentsService
   ],
   declarations: []
 })

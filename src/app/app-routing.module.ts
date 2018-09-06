@@ -31,7 +31,7 @@ const appRoutes: Routes = [
       {
         path: '',
         component: PlanSelectionComponent,
-        canActivate: [LoginGuardGuard],
+        // canActivate: [LoginGuardGuard],
       },
       {
         path: 'card',
@@ -49,6 +49,7 @@ const appRoutes: Routes = [
     path: 'dashboard',
     component: PatientsDashboardComponent,
     data: { title: 'PatientsDashboardComponent' },
+    canActivate: [LoginGuardGuard],
     children: [
       {
         path: '',

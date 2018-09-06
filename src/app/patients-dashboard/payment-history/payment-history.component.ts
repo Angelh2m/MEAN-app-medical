@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../services/user/user.service';
 
 @Component({
   selector: 'app-payment-history',
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaymentHistoryComponent implements OnInit {
 
-  constructor() { }
+  payments = []
 
-  ngOnInit() {
+  constructor(private _userService: UserService) { }
+
+  ngOnInit() { this.onLoad(); }
+
+  onLoad() {
+    if (!this._userService.usersPayload.email) {
+      this._userService.fetchUserProfile()
+        .subscribe(
+          (succ) => (this.payments = succ.payments),
+          (err) => console.log(err)
+        )
+    } else {
+      this.payments = this._userService.usersPayload.payments;
+      console.log(this.payments);
+    }
+
   }
 
 }

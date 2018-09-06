@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../services/login/login.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { User } from '../../models/user.models';
-import { RegisterUserService } from '../../services/registerUser/register-user.service';
 import { UserService } from '../../services/user/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -25,7 +25,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     public _loginService: LoginService,
-    private _user: UserService
+    private _user: UserService,
+    private router: Router
   ) { }
 
   ngOnInit() { }
@@ -129,18 +130,27 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  onRedirect() {
+    this.router.navigate(['/dashboard']);
+  }
+
   onLoginUser(user) {
     this._loginService.loginUser(user)
       .subscribe((res: any) => {
-        this._user.setToken(res.token)
         console.warn(res.token);
+
+        this._user.setToken(res.token)
+        this._user.setDecodedToken();
+        this._user.setAvatar(this._user.userTokenData.avatar);
+        this.onRedirect();
       }),
       (err => console.log(err))
   }
 
   onRegisterUser(user) {
     this._loginService.registerUser(user)
-      .subscribe((res: any) => {
+      .subscribe
+      ((res: any) => {
         console.warn(res);
       }),
       (err => {

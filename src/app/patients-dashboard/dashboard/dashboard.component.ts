@@ -15,46 +15,47 @@ type ArrObj = any[] | any;
 
 export class DashboardComponent implements OnInit {
 
-  usersPayload = this._userService.usersPayload;
-
-
   percentage: Number = 0;
   isEdit = false;
   form: FormGroup;
+  usersPayload = this._userService.usersPayload;
 
-  constructor(private _userService: UserService) {
-    this.onComponentLoad();
-  }
+  constructor(private _userService: UserService) { }
 
   toggleEdit() { this.isEdit = !this.isEdit; }
 
-  ngOnInit() { this.progress(); }
+  ngOnInit() {
+    this.onComponentLoad();
+  }
 
   onComponentLoad() {
     // FETCH FOR THE USER and GET THE DATA
-    this._userService.fetchUserProfile().subscribe(
-      (res: any) => {
+    this._userService.fetchUserProfile()
+      .subscribe((res: any) => {
+
         if (res.info) {
           this.usersPayload = {
             ...res
           }
-        }
-        console.warn("FORM COMPONENT");
-      }, (err) => console.log(err.user)
-    );
 
-    this.form = new FormGroup({
-      firstName: new FormControl(null, Validators.required),
-      lastName: new FormControl(null, Validators.required),
-      phoneNumber: new FormControl(null, Validators.required),
-      address: new FormControl(null, Validators.required),
-      email: new FormControl(null, Validators.required),
-      city: new FormControl(null, Validators.required),
-      state: new FormControl(null, Validators.required),
-    });
+        }
+        setTimeout(() => {
+          this.progress();
+        }, 100);
+      }, (err) => console.log(err.user)
+      );
 
   }
 
+  setFormValues(e) {
+    this.usersPayload = {
+      ...this.usersPayload,
+      info: {
+        ...this.usersPayload.info,
+        [e.target.name]: e.target.value
+      }
+    }
+  }
 
   test() {
     this._userService.getUserDataTest();
@@ -64,14 +65,15 @@ export class DashboardComponent implements OnInit {
     let filled = 0;
     let requiredFields = 0;
 
-    // Object.keys(this.user.info[0]).map((el, i) => {
-    //   requiredFields += 1;
-    //   if (this.user.info[0][el].length >= 1) {
-    //     filled += 1;
-    //   }
-    // })
+    Object.keys(this.usersPayload.info).map((el, i) => {
+      requiredFields += 1;
+      if (this.usersPayload.info[el] && this.usersPayload.info[el].length >= 1) {
+        filled += 1;
+      }
+    })
 
     this.percentage = Math.floor((filled / requiredFields) * 100);
+
   }
 
   onLogout() {
@@ -80,26 +82,19 @@ export class DashboardComponent implements OnInit {
 
 
   onSaveData() {
-
-    this.usersPayload = {
-      // Route differently if the email is different
-      // Grab all from the current form
-      info: {
-        ...this.form.value,
-      },
-    }
-
-    console.warn("CHETK DATa", this.usersPayload);
-
-
+    // Close Edit Field
+    this.isEdit = !this.isEdit
     this._userService.updateUserData(this.usersPayload.info)
       .subscribe(
         (res: any) => {
           this.usersPayload = {
+            ...this.usersPayload,
             info: {
-              ...res.user.info
+              ...res.user
             }
           }
+          console.warn("SAVETHISDATA BACKEDN", this.usersPayload);
+
           this.progress();
         }, (err) => console.log(err)
       );

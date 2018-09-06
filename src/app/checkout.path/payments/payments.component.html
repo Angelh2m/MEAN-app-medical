@@ -19,7 +19,7 @@
         </div>
       </div>
       <div class="payment-card__container">
-        <form #refForm>
+        <form>
           <label>
             <input name="cardholder-name" class="field field--text is-empty" placeholder="Jane Doe" autocomplete="off" />
             <span>
@@ -44,10 +44,10 @@
 
             <div class="error" role="alert"></div>
 
-            <div class="success"><span class="token"></span></div>
+            <div class="success"><span #getToken class="token"></span></div>
           </div>
 
-          <button type="submit">Checkout <span class="icon-arrow-right"></span> </button>
+          <button (click)="onSubmit()" type="submit">Checkout <span class="icon-arrow-right"></span> </button>
 
         </form>
       </div>

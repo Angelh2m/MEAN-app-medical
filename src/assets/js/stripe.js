@@ -82,9 +82,6 @@ function stripeInit() {
             var extraDetails = {
                 name: form.querySelector('input[name=cardholder-name]').value,
             };
-            console.warn('card', card);
-            console.log('extraDetails', extraDetails);
-            console.log(setOutcome);
 
             stripe.createToken(card, extraDetails).then(setOutcome);
         });

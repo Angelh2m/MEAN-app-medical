@@ -9,11 +9,11 @@
 
   <div class="col-2-of-4">
     <div class="card">
-      <h3 class="card__user">{{usersPayload.info.firstName}} {{usersPayload.info.lastName}}</h3>
+      <h3 class="card__user"> {{usersPayload.info?.firstName || ' '}} {{usersPayload.info?.lastName || ' '}}</h3>
       <div class="card__user--initials">
         JD
       </div>
-      <h3 class="card__location">{{usersPayload.info.state}}, {{usersPayload.info.city}} </h3>
+      <h3 class="card__location">{{usersPayload.info?.state || ' '}}, {{usersPayload.info?.city || ' '}} </h3>
       <div class="card progress">
         <div class="progress__bar-background ">
           <div class="progress__bar" [style.width.%]="percentage"></div>
@@ -29,57 +29,60 @@
       <span class="button--edit" (click)="toggleEdit()">Edit</span>
       <h2 class="subtitle--left-small  ">Your information:</h2>
       <div *ngIf='!isEdit'>
-        <div>
+        <div *ngIf="usersPayload.info">
           <span class="text--small ">Name:</span>
-          <p>{{usersPayload.info.firstName}} {{usersPayload.info.lastName}}</p>
+          <p>
+            {{usersPayload.info?.firstName || ' '}}
+            {{usersPayload.info.lastName}}</p>
         </div>
         <div>
           <span class="text--small ">Phone Number:</span>
-          <p>{{usersPayload.info.phoneNumber}}</p>
+          <p>{{usersPayload.info?.phoneNumber}}</p>
         </div>
         <div>
           <span class="text--small ">Address:</span>
-          <p>{{usersPayload.info.address}}</p>
+          <p>{{usersPayload.info?.address}}</p>
         </div>
         <div>
           <span class="text--small ">City:</span>
-          <p>{{usersPayload.info.city}}</p>
+          <p>{{usersPayload.info?.city}}</p>
         </div>
         <div>
           <span class="text--small ">State:</span>
-          <p>{{usersPayload.info.state}}</p>
+          <p>{{usersPayload.info?.state}}</p>
         </div>
       </div>
-      <hr>
-      <form [formGroup]="form" (ngSubmit)="onSaveData()" class="form-primary" *ngIf='isEdit'>
+
+
+      <form class="form-primary" *ngIf='isEdit'>
         <div class="form-primary__flex">
           <div>
             <span class="text--small ">Name:</span>
-            <input class="form-primary__input" formControlName="firstName" type="text" placeholder="{{usersPayload.info.firstName}}">
+            <input class="form-primary__input" (blur)="setFormValues($event)" name="firstName" type="text" placeholder="{{usersPayload.info?.firstName || ''}}">
           </div>
           <div>
             <span class="text--small ">Last Name:</span>
-            <input class="form-primary__input" formControlName="lastName" type="text" placeholder="{{usersPayload.info.lastName}}">
+            <input class="form-primary__input" (blur)="setFormValues($event)" name="lastName" type="text" value="{{usersPayload.info.lastName}}">
           </div>
         </div>
         <div>
           <span class="text--small ">Phone number:</span>
-          <input class="form-primary__input" formControlName="phoneNumber" type="text" placeholder="{{usersPayload.info.phoneNumber}}">
+          <input class="form-primary__input" type="text" (blur)="setFormValues($event)" name="phoneNumber" value="{{usersPayload.info.phoneNumber}}">
         </div>
         <div>
           <span class="text--small ">Address:</span>
-          <input class="form-primary__input" type="text" formControlName="address" placeholder="{{usersPayload.info.address}}">
+          <input class="form-primary__input" type="text" (blur)="setFormValues($event)" name="address" placeholder="{{usersPayload.info.address}}">
         </div>
         <div>
           <span class="text--small ">City:</span>
-          <input class="form-primary__input" type="text" formControlName="city" placeholder="{{usersPayload.info.city}}">
+          <input class="form-primary__input" type="text" (blur)="setFormValues($event)" name="city" placeholder="{{usersPayload.info.city}}">
         </div>
         <div>
           <span class="text--small ">State:</span>
-          <input class="form-primary__input" type="text" formControlName="state" placeholder="{{usersPayload.info.state}}">
+          <input class="form-primary__input" type="text" (blur)="setFormValues($event)" name="state" placeholder="{{usersPayload.info.state}}">
         </div>
 
-        <button type="submit" class="button--save">Save</button>
+        <button (click)="onSaveData()" class="button--save">Save</button>
       </form>
     </div>
 
