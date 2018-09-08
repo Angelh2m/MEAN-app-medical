@@ -21,17 +21,21 @@
 
 <table class="conversation-table">
   <tr class="conversation-table__flex">
-    <th class="text--left">Doctor's name </th>
+    <!-- <th class="text--left">Doctor's name </th> -->
     <th class="text--center">Subject </th>
     <th class="text--right">Date</th>
   </tr>
-  <tbody *ngFor="let userQ  of questionsList">
-    <tr class="conversation-table--cell">
-      <td>{{userQ.doctor}}</td>
-      <td>{{userQ.subject}} </td>
-      <td>{{userQ.date | date: 'dd/MM/yyyy'}}</td>
-    </tr>
-    <small>{{userQ.content}}</small>
+  <tbody *ngFor="let userQ  of questionsList ;let i=index " (click)="isClicked[i] = !isClicked[i]; toogleResponse()">
+    <div class="conversation__container" #questionBox>
+      <tr class="conversation-table--cell">
+        <!-- <td>{{userQ.doctor}}</td> -->
+        <td>{{userQ.subject}} </td>
+        <td>{{userQ.date | date: 'dd/MM/yyyy'}}</td>
+      </tr>
+      <div class="conversation__response" *ngIf="isClicked[i]">
+        <small>{{userQ.content}}</small>
+      </div>
+    </div>
   </tbody>
 
 

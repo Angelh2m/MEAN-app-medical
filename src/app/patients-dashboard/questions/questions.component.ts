@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { UserService } from '../../services/user/user.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-questions',
@@ -11,8 +12,10 @@ export class QuestionsComponent implements OnInit {
 
   questionsList: object = [];
   question: FormGroup;
+  @ViewChildren("questionBox") questionBox: QueryList<any>
+  isClicked = [false, false];
 
-  constructor(public _userService: UserService) { }
+  constructor(public _userService: UserService, private router: Router) { }
 
   ngOnInit() {
     this.fetchUserQuestions();
@@ -20,7 +23,10 @@ export class QuestionsComponent implements OnInit {
       subject: new FormControl(null, Validators.required),
       content: new FormControl(null, Validators.required),
     });
+  }
 
+  ngAfterViewInit() {
+    // this.questionBox.changes.subscribe(c => {console.log(c._results) })
   }
 
   fetchUserQuestions() {
@@ -29,8 +35,7 @@ export class QuestionsComponent implements OnInit {
       this._userService.fetchUserProfile()
         .subscribe(
           (succ) => (this.questionsList = succ.questions),
-          (err) => console.log(err)
-        )
+          (err) => err.error ? this.router.navigate(['/']) : '')
     }
   }
 
@@ -42,5 +47,7 @@ export class QuestionsComponent implements OnInit {
         )
       )
   }
+
+  toogleResponse(e) { }
 
 }

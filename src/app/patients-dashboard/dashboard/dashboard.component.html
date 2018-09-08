@@ -12,6 +12,7 @@
       <h3 class="card__user"> {{usersPayload.info?.firstName || ' '}} {{usersPayload.info?.lastName || ' '}}</h3>
       <div class="card__user--initials">
         JD
+        <img *ngIf="usersPayload.info?.avatar" [src]="usersPayload.info?.avatar  " alt="">
       </div>
       <h3 class="card__location">{{usersPayload.info?.state || ' '}}, {{usersPayload.info?.city || ' '}} </h3>
       <div class="card progress">

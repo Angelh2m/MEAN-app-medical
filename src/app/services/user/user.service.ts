@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as jwt_decode from "jwt-decode";
 import { HttpClient, HttpParams } from "@angular/common/http";
-import { map } from 'rxjs/operators';
+import { map, tap, catchError } from 'rxjs/operators';
 import { Observable, BehaviorSubject } from "rxjs"
 import { Router } from '@angular/router';
 
@@ -43,8 +43,23 @@ export class UserService {
   }
 
   isLogged() {
+    const token = jwt_decode(this.getToken());
+    // EPOC UNIX TIME MILLISECONDS TO SECONDS 
+    var tokenExpiry = new Date(token.exp * 1000);
+    var currentTime = new Date();
+
+    // console.warn(currentTime > tokenExpiry);
+    // console.log('------------------------');
+    // console.warn('EXP date', tokenExpiry);
+    // console.warn('CURRENT date', currentTime);
+
+    if (currentTime > tokenExpiry) {
+      return false
+    }
+
     return this.getToken() && this.getToken().length > 35 ? true : false;
   }
+
   getUserDataTest() {
     console.log(this.usersPayload);
   }
@@ -54,17 +69,27 @@ export class UserService {
 
     // IF THERE IS NO EMAIL USER DOES NOT EXIST
     if (this.usersPayload.email == '') {
-      console.warn('FETCH A USER FROM API THERE IS NO EMAIL');
+      // console.warn('FETCH A USER FROM API THERE IS NO EMAIL');
       return this._http.get('/api/profile').pipe(
+        tap(el => {
+          console.log(el);
+          return el
+        }),
         map((el: any) => {
           this.usersPayload = { ...el.user }
           // Broadcast the users avatar to header
           this.avatar.next(this.usersPayload.info.avatar);
+          console.log(this.usersPayload);
           return el.user
+        }),
+        catchError((err) => {
+          if (err)
+            console.log('THERE is an ERROR');
+          throw err;
         })
       )
     } else {
-      console.warn('RETURN OBSERVABLE WITH USERS PAYLOAD', this.usersPayload);
+      // console.warn('RETURN OBSERVABLE WITH USERS PAYLOAD', this.usersPayload);
       const simpleObservable = new Observable((observer) => {
         observer.next({ ...this.usersPayload })
         observer.complete()
@@ -82,6 +107,7 @@ export class UserService {
     return this._http.put('/api/user', body).pipe(
       map((el: any) => {
         this.usersPayload = {
+          ...this.usersPayload,
           info: {
             ...el.user
           }

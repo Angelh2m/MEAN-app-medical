@@ -13,6 +13,7 @@ export class LoginGuardGuard implements CanActivate {
     public _userService: UserService) { }
 
   canActivate() {
+    console.log(this._userService.isLogged());
 
     if (this._userService.isLogged()) {
       return true;

@@ -113,4 +113,30 @@
     line-height: 2.5;
     width: 100%;
   }
+
+  &--checkout {
+    background: white;
+    color: #00c953;
+    border: solid;
+    font-size: 1.4rem;
+    height: 54px;
+    border-radius: 28px;
+    line-height: 2;
+    display: flex;
+    align-items: center;
+    float: right;
+    padding: 0 2.5rem;
+    font-weight: 600;
+
+    i {
+      margin-top: 2px;
+      margin-left: 3rem;
+      font-size: 2rem;
+    }
+
+    &-active {
+      background: #00c953;
+      color: white;
+    }
+  }
 }

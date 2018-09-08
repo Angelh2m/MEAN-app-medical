@@ -8,6 +8,11 @@ import { PaymentsService } from '../../services/payments/payments.service';
 })
 export class PlanSelectionComponent implements OnInit {
   home: boolean = true;
+  membership: any = {
+    price: '0',
+    selected: false,
+    number: null
+  }
 
   constructor(
     public router: Router,
@@ -16,14 +21,18 @@ export class PlanSelectionComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.home = this.activatedRoute.snapshot.data.title !== 'payments/cards';
-    console.warn(this.home);
+    // this.home = this.activatedRoute.snapshot.data.title !== 'payments/cards';
+    this.membership = this._paymentsService.membership;
   }
 
-  setPayload() {
-    this._paymentsService.setPayment();
-    // console.log('Set Payment!!! ');
+  setPayload(option) {
+    this.membership = this._paymentsService.setPayment(option);
   }
+
+  onProceed() {
+    this.router.navigate(['/payments/card']);
+  }
+
   ngOnDestroy() {
     this.home = this.activatedRoute.snapshot.data.title !== 'payments/cards';
   }

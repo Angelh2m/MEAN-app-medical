@@ -7,10 +7,36 @@
   overflow: visible;
   margin: 0 auto;
   margin-bottom: 4rem;
+  position: relative;
+  box-shadow: 0px 0px 14px #9e9c9c;
 
   @include tablet {
     width: 43vw;
     max-width: 35rem;
+  }
+
+  &.active:before {
+    content: '';
+    position: absolute;
+    border: solid 15px #84ef9a !important;
+    left: -4%;
+    top: -5%;
+    border-radius: 18px;
+    animation: pulse 3s infinite;
+  }
+
+  @keyframes pulse {
+    0% {
+      -webkit-box-shadow: 0 0 0 0 #84ef9954;
+    }
+
+    70% {
+      -webkit-box-shadow: 0 0 0 10px #84ef9954;
+    }
+
+    100% {
+      -webkit-box-shadow: 0 0 0 0 #84ef9954;
+    }
   }
 
   &--blue {

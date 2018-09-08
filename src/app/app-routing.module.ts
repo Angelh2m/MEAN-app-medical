@@ -15,6 +15,8 @@ import { PaymentHistoryComponent } from './patients-dashboard/payment-history/pa
 import { AppointmentsComponent } from './patients-dashboard/appointments/appointments.component';
 import { RecomendationsComponent } from './patients-dashboard/recomendations/recomendations.component';
 import { DashboardComponent } from './patients-dashboard/dashboard/dashboard.component';
+import { PaymentGuard } from './services/guards/payment.guard';
+import { ConfirmationGuard } from './services/guards/confirmation.guard';
 
 
 
@@ -36,12 +38,12 @@ const appRoutes: Routes = [
       {
         path: 'card',
         component: PaymentsComponent,
-        canActivate: [LoginGuardGuard],
+        canActivate: [LoginGuardGuard, PaymentGuard],
       },
       {
         path: 'payment-confirmation',
         component: PaymentConfirmationComponent,
-        canActivate: [LoginGuardGuard],
+        canActivate: [LoginGuardGuard, ConfirmationGuard],
       }
     ]
   },

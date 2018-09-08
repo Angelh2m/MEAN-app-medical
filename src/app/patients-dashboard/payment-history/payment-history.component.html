@@ -9,15 +9,11 @@
     <th class="text--right">BALANCE</th>
   </tr>
   <tr class="conversation-table--cell" *ngFor="let payment  of payments">
-    <td>{{payment.plan}} </td>
+    <td>{{payment.plan ? payment.plan : 'Hello'}} </td>
     <td>{{payment.date | date: 'dd/MM/yyyy' }} </td>
-    <td>{{payment.expires}}</td>
+    <!-- <td>{{payment.date}} </td> -->
+    <td>{{payment.expires | date: 'dd/MM/yyyy' }}</td>
     <td>${{payment.amount }}</td>
   </tr>
-  <!-- <tr class="conversation-table--cell" *ngFor="let payment  of payments">
-    <td>2 Months </td>
-    <td>July 10th 2018 </td>
-    <td>December 20th 2018</td>
-    <td>$8,000</td>
-  </tr> -->
+
 </table>

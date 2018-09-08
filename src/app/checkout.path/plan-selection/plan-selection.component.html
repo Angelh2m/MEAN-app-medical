@@ -2,32 +2,41 @@
 
   <div>
     <h2 class="subtitle">Select your plan</h2>
+    <i class="subtitle__small">Multiple memeberships must be purchased individualy</i>
   </div>
 
   <div *ngIf="home" class="">
     <div class="row ">
       <div class="col-2-of-4">
-        <div class="membership row ">
+        <div [class.active]="membership.number == 0" class="membership row ">
           <small class=" membership__info">Valid only for one surgery</small>
           <div class="membership__flex">
             <h4 class="membership__package-name">Personal Support</h4>
             <strong class="membership__price">$45</strong>
           </div>
-          <button class="membership__buy-button" (click)="setPayload()">Buy Now</button>
+          <button class="membership__buy-button" (click)="setPayload(0)">Select</button>
         </div>
       </div>
 
       <div class="col-2-of-4">
-        <div class="membership membership--blue row ">
+        <div [class.active]="membership.number == 1" class="membership membership--blue row ">
           <small class=" membership__info">Valid only for one surgery</small>
           <div class="membership__flex">
             <h4 class="membership__package-name">Personal Support</h4>
             <strong class="membership__price">$45</strong>
           </div>
-          <button class="membership__buy-button">Buy Now</button>
+          <button class="membership__buy-button" (click)="setPayload(1)">Select</button>
         </div>
       </div>
     </div>
+
+    <div class="row">
+      <button (click)="onProceed()" [class.button--checkout-active]="membership.selected" class="button--checkout">
+        <span>Proceed to pay</span>
+        <i class="icon-arrow-right"></i>
+      </button>
+    </div>
+
 
   </div>
 

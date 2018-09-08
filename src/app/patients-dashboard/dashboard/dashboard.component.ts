@@ -32,19 +32,11 @@ export class DashboardComponent implements OnInit {
     // FETCH FOR THE USER and GET THE DATA
     this._userService.fetchUserProfile()
       .subscribe((res: any) => {
-
         if (res.info) {
-          this.usersPayload = {
-            ...res
-          }
-
+          this.usersPayload = { ...res }
         }
-        setTimeout(() => {
-          this.progress();
-        }, 100);
-      }, (err) => console.log(err.user)
-      );
-
+        this.progress();
+      });
   }
 
   setFormValues(e) {
