@@ -41,6 +41,10 @@
     height: 7rem;
     position: relative;
 
+    &.fixed {
+      position: fixed;
+    }
+
     #{$c}__logo {
       a {
         color: black;

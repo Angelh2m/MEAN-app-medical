@@ -9,9 +9,49 @@ import { FaqData } from '../utils/data/data.faq';
 
 export class LandingComponent implements OnInit {
 
+  x: number = 0;
+  surgeries = [
+    'Low back pain surgery', 'Gastric bypass',
+    'Knee replacements ', 'hip replacement ', ' joint replacement',
+    'femoral shaft fracture',
+  ]
+  surgeries2 = [
+    'Arthroplasty', 'Shoulder arthroscopy ',
+    'Lumbar spinal fusion', 'Low back intervertebral disc surgery',
+    'Reconstructive surgery',
+  ]
+
+
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() {
+
+    // setInterval(() => {
+    //   this.surgeries.push('new');
+    // }, 1000)
+
+
+    // this.run();
+    // setInterval(() => {
+    //   console.log('HWEWEW');
+    //   this.x += 1;
+    //   console.log(this.x);
+
+    //   if (this.x == 30) {
+
+    //     this.x = 0;
+    //   }
+    // }, 200);
+
+  }
+
+
+  // run() {
+  //   requestAnimationFrame(() => {
+  //     // this.run();
+  //   });
+  // }
+
   /* *
   *  Toggle FAQ
   */
@@ -23,6 +63,3 @@ export class LandingComponent implements OnInit {
 
   questions: Faq[] = FaqData;
 }
-
-
-

@@ -92,6 +92,13 @@
     text-align: center;
   }
 
+  &__img {
+    position: absolute;
+    border-radius: 50%;
+    width: 6rem;
+    left: 41%;
+  }
+
   &__location {
     color: #4e4e4e;
     text-align: center;
@@ -167,13 +174,54 @@
   }
 }
 
+
+.conversation {
+  display: flex;
+
+  &--display {
+    background-color: white;
+    width: 70%;
+    margin-left: 5%;
+    padding: 2rem;
+
+  }
+
+  textarea {
+    position: relative;
+    display: block;
+    width: 100%;
+    border: solid 1px whitesmoke;
+    border-radius: 5px;
+    padding: 1.5rem;
+
+  }
+
+}
+
+.conversation__response {
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border: solid 2px whitesmoke;
+  border-radius: 10px;
+}
+
 .conversation-table {
   margin: 0;
   padding: 0;
+  width: 25%;
+
+  &--payment {
+    width: 100%;
+  }
+
+  .active {
+    background-color: whitesmoke;
+  }
 
   tbody {
-    padding: .5rem 1rem;
+    // padding: .5rem 1rem;
     display: block;
+    height: 4rem;
   }
 
   &__flex {
@@ -191,7 +239,6 @@
 
   &--cell {
     position: relative;
-    background-color: white;
     padding: 0rem 1.5rem;
     display: flex;
     justify-content: space-between;

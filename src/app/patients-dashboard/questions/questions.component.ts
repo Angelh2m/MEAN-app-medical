@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class QuestionsComponent implements OnInit {
 
   questionsList: object = [];
+  currentMessage: any = {};
   question: FormGroup;
   @ViewChildren("questionBox") questionBox: QueryList<any>
   isClicked = [false, false];
@@ -27,6 +28,12 @@ export class QuestionsComponent implements OnInit {
 
   ngAfterViewInit() {
     // this.questionBox.changes.subscribe(c => {console.log(c._results) })
+  }
+
+  selectMessage(id) {
+    this.currentMessage = this.questionsList[id];
+    this.isClicked = [];
+    this.isClicked[id] = !this.isClicked[id];
   }
 
   fetchUserQuestions() {
@@ -48,6 +55,8 @@ export class QuestionsComponent implements OnInit {
       )
   }
 
-  toogleResponse(e) { }
+  toogleResponse(e) {
+
+  }
 
 }

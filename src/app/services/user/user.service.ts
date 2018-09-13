@@ -132,6 +132,21 @@ export class UserService {
     )
   }
 
+  medicalHistory(payload) {
+    const body = new HttpParams()
+      .set('medical', JSON.stringify(payload))
+
+
+    return this._http.post('/api/medical-exam', body).pipe(
+      map((el: any) => {
+        // if (el.user !== undefined) {
+        //   this.usersPayload = { ...el.user }
+        // }
+        return el
+      })
+    )
+  }
+
   makePayment(token) {
     const body = new HttpParams()
       .set('stripeToken', token)

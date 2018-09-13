@@ -72,7 +72,6 @@ export class DashboardComponent implements OnInit {
     this._userService.onLogout();
   }
 
-
   onSaveData() {
     // Close Edit Field
     this.isEdit = !this.isEdit

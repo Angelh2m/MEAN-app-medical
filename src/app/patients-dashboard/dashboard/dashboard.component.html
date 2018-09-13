@@ -1,9 +1,12 @@
 <h2 class="subtitle--left">Dashboard</h2>
 <hr>
+<!-- 
 
 <button (click)="onLogout()"> LOGOUT </button>
 <hr>
-<button (click)="test()">Check Service Data</button>
+<button (click)="test()">Check Service Data</button> -->
+
+<app-medical-background></app-medical-background>
 
 <div class=" row">
 
@@ -11,13 +14,20 @@
     <div class="card">
       <h3 class="card__user"> {{usersPayload.info?.firstName || ' '}} {{usersPayload.info?.lastName || ' '}}</h3>
       <div class="card__user--initials">
-        JD
-        <img *ngIf="usersPayload.info?.avatar" [src]="usersPayload.info?.avatar  " alt="">
+        <img
+          class="card__img"
+          *ngIf="usersPayload.info?.avatar"
+          [src]="usersPayload.info?.avatar  "
+          alt="User Image"
+        >
       </div>
       <h3 class="card__location">{{usersPayload.info?.state || ' '}}, {{usersPayload.info?.city || ' '}} </h3>
       <div class="card progress">
         <div class="progress__bar-background ">
-          <div class="progress__bar" [style.width.%]="percentage"></div>
+          <div
+            class="progress__bar"
+            [style.width.%]="percentage"
+          ></div>
         </div>
         <span class="progress__status">{{ percentage }}% Complete</span>
       </div>
@@ -27,7 +37,10 @@
 
   <div class="col-2-of-4">
     <div class="card">
-      <span class="button--edit" (click)="toggleEdit()">Edit</span>
+      <span
+        class="button--edit"
+        (click)="toggleEdit()"
+      >Edit</span>
       <h2 class="subtitle--left-small  ">Your information:</h2>
       <div *ngIf='!isEdit'>
         <div *ngIf="usersPayload.info">
@@ -55,35 +68,77 @@
       </div>
 
 
-      <form class="form-primary" *ngIf='isEdit'>
+      <form
+        class="form-primary"
+        *ngIf='isEdit'
+      >
         <div class="form-primary__flex">
           <div>
             <span class="text--small ">Name:</span>
-            <input class="form-primary__input" (blur)="setFormValues($event)" name="firstName" type="text" placeholder="{{usersPayload.info?.firstName || ''}}">
+            <input
+              class="form-primary__input"
+              (blur)="setFormValues($event)"
+              name="firstName"
+              type="text"
+              placeholder="{{usersPayload.info?.firstName || ''}}"
+            >
           </div>
           <div>
             <span class="text--small ">Last Name:</span>
-            <input class="form-primary__input" (blur)="setFormValues($event)" name="lastName" type="text" value="{{usersPayload.info.lastName}}">
+            <input
+              class="form-primary__input"
+              (blur)="setFormValues($event)"
+              name="lastName"
+              type="text"
+              value="{{usersPayload.info.lastName}}"
+            >
           </div>
         </div>
         <div>
           <span class="text--small ">Phone number:</span>
-          <input class="form-primary__input" type="text" (blur)="setFormValues($event)" name="phoneNumber" value="{{usersPayload.info.phoneNumber}}">
+          <input
+            class="form-primary__input"
+            type="text"
+            (blur)="setFormValues($event)"
+            name="phoneNumber"
+            value="{{usersPayload.info.phoneNumber}}"
+          >
         </div>
         <div>
           <span class="text--small ">Address:</span>
-          <input class="form-primary__input" type="text" (blur)="setFormValues($event)" name="address" placeholder="{{usersPayload.info.address}}">
+          <input
+            class="form-primary__input"
+            type="text"
+            (blur)="setFormValues($event)"
+            name="address"
+            placeholder="{{usersPayload.info.address}}"
+          >
         </div>
         <div>
           <span class="text--small ">City:</span>
-          <input class="form-primary__input" type="text" (blur)="setFormValues($event)" name="city" placeholder="{{usersPayload.info.city}}">
+          <input
+            class="form-primary__input"
+            type="text"
+            (blur)="setFormValues($event)"
+            name="city"
+            placeholder="{{usersPayload.info.city}}"
+          >
         </div>
         <div>
           <span class="text--small ">State:</span>
-          <input class="form-primary__input" type="text" (blur)="setFormValues($event)" name="state" placeholder="{{usersPayload.info.state}}">
+          <input
+            class="form-primary__input"
+            type="text"
+            (blur)="setFormValues($event)"
+            name="state"
+            placeholder="{{usersPayload.info.state}}"
+          >
         </div>
 
-        <button (click)="onSaveData()" class="button--save">Save</button>
+        <button
+          (click)="onSaveData()"
+          class="button--save"
+        >Save</button>
       </form>
     </div>
 

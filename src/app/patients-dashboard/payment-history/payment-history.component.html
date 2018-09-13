@@ -1,14 +1,17 @@
 <h2 class="subtitle--left">Payment History</h2>
 <hr>
 
-<table class="conversation-table">
+<table class="conversation-table conversation-table--payment">
   <tr class="conversation-table__flex conversation-table">
     <th class="text--left">PERSONAL PLAN</th>
     <th class="text--center">DATE PURCHASED </th>
     <th class="text--right">EXPIRES</th>
     <th class="text--right">BALANCE</th>
   </tr>
-  <tr class="conversation-table--cell" *ngFor="let payment  of payments">
+  <tr
+    class="conversation-table--cell"
+    *ngFor="let payment  of payments"
+  >
     <td>{{payment.plan ? payment.plan : 'Hello'}} </td>
     <td>{{payment.date | date: 'dd/MM/yyyy' }} </td>
     <!-- <td>{{payment.date}} </td> -->

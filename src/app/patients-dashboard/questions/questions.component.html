@@ -1,45 +1,106 @@
-<h2 class="subtitle--left">Questions</h2>
-<hr>
-<form [formGroup]="question" (ngSubmit)="askQuestion()" class="card">
-  <h2 class="subtitle--left-small"></h2>
-  <div class="editor">
-    <div class="editor__header">
-      <span> Subject </span>
-      <input formControlName="subject" type="text" placeholder="Question title">
-    </div>
-    <div class="editor__text-area">
-      <textarea formControlName="content" placeholder="How can we help you?"></textarea>
-    </div>
-  </div>
-  <button type="submit" class="button--blue">Send</button>
-</form>
-
-
 <h2 class="subtitle--left">Conversation History</h2>
 <hr>
 
 
-<table class="conversation-table">
-  <tr class="conversation-table__flex">
-    <!-- <th class="text--left">Doctor's name </th> -->
-    <th class="text--center">Subject </th>
-    <th class="text--right">Date</th>
-  </tr>
-  <tbody *ngFor="let userQ  of questionsList ;let i=index " (click)="isClicked[i] = !isClicked[i]; toogleResponse()">
-    <div class="conversation__container" #questionBox>
-      <tr class="conversation-table--cell">
-        <!-- <td>{{userQ.doctor}}</td> -->
-        <td>{{userQ.subject}} </td>
-        <td>{{userQ.date | date: 'dd/MM/yyyy'}}</td>
-      </tr>
-      <div class="conversation__response" *ngIf="isClicked[i]">
-        <small>{{userQ.content}}</small>
+<div class="conversation">
+  <table class="conversation-table">
+    <tr class="conversation-table__flex">
+      <!-- <th class="text--left">Doctor's name </th> -->
+      <th class="text--center">Subject </th>
+      <th class="text--right">Date</th>
+    </tr>
+    <tbody
+      *ngFor="let userQ  of questionsList ;let i=index "
+      (click)=" selectMessage(i)"
+      [ngClass]="{active: isClicked[i]}"
+    >
+      <div
+        class="conversation__container"
+        #questionBox
+      >
+        <tr class="conversation-table--cell">
+          <!-- <td>{{userQ.doctor}}</td> -->
+          <td>{{userQ.subject}} </td>
+          <td>{{userQ.date | date: 'dd/MM/yyyy'}}</td>
+        </tr>
+        <!-- <div
+          class="conversation__response"
+          *ngIf="isClicked[i]"
+        >
+          <small>{{userQ.content}}</small>
+        </div> -->
       </div>
+    </tbody>
+  </table>
+  <div class="conversation--display">
+    <h2 class="subtitle--left-small">Question: {{currentMessage.subject}}</h2>
+    <hr>
+    <h4> Details: </h4>
+    <p>
+      {{currentMessage.content}}
+      <!-- kekjhrkjewhrjkewhrkhkewkr jkwehrkjwer jkwehrkjewrh kejwhr
+      kekjhrkjewhrjkewhrkhkewkr jkwehrkjwer jkwehrkjewrh kejwhr
+      kekjhrkjewhrjkewhrkhkewkr jkwehrkjwer jkwehrkjewrh kejwhr
+      kekjhrkjewhrjkewhrkhkewkr jkwehrkjwer jkwehrkjewrh kejwhr -->
+    </p>
+    <hr>
+    <h4>Responses</h4>
+    <p>
+      {{currentMessage.answer}}
+      <!-- kekjhrkjewhrjkewhrkhkewkr jkwehrkjwer jkwehrkjewrh kejwhr
+      kekjhrkjewhrjkewhrkhkewkr jkwehrkjwer jkwehrkjewrh kejwhr
+      kekjhrkjewhrjkewhrkhkewkr jkwehrkjwer jkwehrkjewrh kejwhr
+      kekjhrkjewhrjkewhrkhkewkr jkwehrkjwer jkwehrkjewrh kejwhr -->
+    </p>
+
+    <hr>
+    <button class="button--respond">
+      Respond
+    </button>
+
+    <form>
+      <label for="">Reply</label>
+      <textarea>
+        TEXT
+      </textarea>
+    </form>
+
+  </div>
+
+</div>
+
+<h2 class="subtitle--left">Ask a new question</h2>
+<hr>
+
+<form
+  [formGroup]="question"
+  (ngSubmit)="askQuestion()"
+  class="card"
+>
+  <h2 class="subtitle--left-small"></h2>
+  <div class="editor">
+    <div class="editor__header">
+      <span> Subject </span>
+      <input
+        formControlName="subject"
+        type="text"
+        placeholder="Question title"
+      >
     </div>
-  </tbody>
+    <div class="editor__text-area">
+      <textarea
+        formControlName="content"
+        placeholder="How can we help you?"
+      ></textarea>
+    </div>
+  </div>
+  <button
+    type="submit"
+    class="button--blue"
+  >Send</button>
+</form>
 
 
-</table>
 
 
 <!-- <table class="conversation-table">

@@ -23,48 +23,95 @@ $title-color: #32325d;
     transform: translateX(-50%);
     width: 100%;
   }
+}
 
-  &__pills {
-    position: absolute;
-    bottom: 0px;
-    z-index: -1;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
+.pill {
+  position: absolute;
+  width: 100vw;
+  bottom: 0;
+  bottom: -25px;
+  z-index: -10;
+}
 
-    span {
-      background-color: rgba(138, 43, 226, 0.7);
-      margin: 0.5rem 2rem;
-      border-radius: 30px;
-      padding: 1rem;
-      display: inline-block;
-      color: white;
-      font-size: 2vw;
-    }
+.pills,
+.pills2,
+.pills3 {
+  position: relative;
+  // background-color: greenyellow;
+  background-color: rgba(138, 43, 226, 0.14);
+  display: inline-block;
+  padding: .5rem;
+  margin-right: 1.5rem;
+  border-radius: 5rem;
+  padding: 0rem 3rem;
+  color: rgba(138, 43, 226, 0.7);
+}
 
-    &__thread {
-      display: inline-block;
-      height: 7vh;
+.pill__container {
+  // width: 200vw;
+  width: 400vw;
+  margin-bottom: 1.5rem;
+}
 
-      // width: 150vw;
-      &:after {
-        content: "";
-        display: block;
-        clear: both;
-      }
-    }
+.pills {
+  transform: translate(50vw);
+  // animation: flow 50s infinite linear, infinite;
+}
+
+.pills2 {
+  transform: translate(25vw);
+  // animation: flow 80s infinite linear, cubic-bezier(.47, -0.44, .49, 1.46), infinite both;
+}
+
+.pills3 {
+  transform: translate(0vw);
+
+  // animation: ease, step-start, cubic-bezier(0.1, 0.7, 1.0, 0.1);
+  // animation: flow 60s infinite linear both;
+  &:nth-last-child(3) {
+    animation-delay: 1s;
+  }
+
+  &:nth-last-child(2) {
+    animation-delay: 2s;
+  }
+
+  &:nth-last-child(1) {
+    animation-delay: 1s;
   }
 }
 
-@keyframes slide {
+@keyframes flow {
   0% {
-    transform: translateX(100vw);
+    // transform: translateX(100vw);
   }
 
   50% {}
 
   100% {
-    transform: translateX(-125vw)
+    transform: translateX(-230vw)
+  }
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(200vw);
+  }
+
+  50% {}
+
+  100% {
+    transform: translateX(-10vw)
+  }
+}
+
+@keyframes y {
+  to {
+    top: 0;
+  }
+
+  from {
+    top: -145px;
   }
 }
 

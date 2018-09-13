@@ -56,6 +56,15 @@
   margin-bottom: 1.5rem;
   margin-top: 1.5rem;
 
+  &--secondary {
+    font-size: 2rem;
+    text-align: center;
+    color: $title-color;
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+    font-weight: 300;
+  }
+
   &--left-small {
     text-align: left;
     color: $title-color;

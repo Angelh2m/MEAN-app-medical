@@ -3,7 +3,7 @@ import { User } from '../../models/user.models';
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { URL_ENDPOINTS } from '../../config/config';
 import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { RequestOptions } from '@angular/http';
 
 @Injectable({
@@ -11,6 +11,9 @@ import { RequestOptions } from '@angular/http';
 })
 
 export class LoginService {
+
+  public loginModal = new BehaviorSubject<any>('false');
+  public loginModalSwitch = this.loginModal.asObservable();
 
   constructor(private _http: HttpClient) { }
 

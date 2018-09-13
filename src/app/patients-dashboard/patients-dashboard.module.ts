@@ -8,6 +8,7 @@ import { DASHBOARD_ROUTES } from './patients-dashboard-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { UserService } from '../services/user/user.service';
+import { MedicalBackgroundComponent } from './medicalBackground/medical-background.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { UserService } from '../services/user/user.service';
     PaymentHistoryComponent,
     AppointmentsComponent,
     RecomendationsComponent,
-    DashboardComponent]
+    DashboardComponent,
+    MedicalBackgroundComponent]
 })
 export class PatientsDashboardModule { }

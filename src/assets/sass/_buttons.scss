@@ -139,4 +139,35 @@
       color: white;
     }
   }
+
+  &--respond {
+    border: solid 1px #d8d8d8;
+    padding: 1.5rem;
+    border-radius: 40px;
+    color: white;
+    background-color: #373761;
+    text-transform: uppercase;
+    font-size: .9rem;
+  }
+
+  &--option-toggle {
+    width: 8rem;
+    background-color: whitesmoke;
+    border: solid 1px #e0e0e0;
+    padding: .3rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 23px;
+    font-size: 1.2rem;
+
+    .yes {
+      // padding: .5rem;
+      // background-color: whitesmoke;
+    }
+
+    .no {
+      // padding: .5rem;
+      // background-color: whitesmoke;
+    }
+  }
 }
