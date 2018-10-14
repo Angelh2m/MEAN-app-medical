@@ -138,10 +138,11 @@ export class LoginComponent implements OnInit {
     this._loginService.loginUser(user)
       .subscribe((res: any) => {
         console.warn(res.token);
-
         this._user.setToken(res.token)
         this._user.setDecodedToken();
         this._user.setAvatar(this._user.userTokenData.avatar);
+        this._loginService.loginModal.next('false')
+
         this.onRedirect();
       }),
       (err => console.log(err))

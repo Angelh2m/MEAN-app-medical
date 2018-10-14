@@ -25,14 +25,19 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    console.log("HEADER INIT");
+
+    this._userService.isLogged();
     this._userService.avatarObsv
       .subscribe(avatar => {
+        console.warn('avatar', avatar);
+
         this.usersAvatar = avatar
       });
     this._login.loginModalSwitch
       .subscribe((resp) => {
-        this.isActive = JSON.parse(resp);
-        this.showModal = JSON.parse(resp);
+        this.isActive = false;
+        this.showModal = false;
         this.burger.nativeElement.checked = false
         // console.warn(this.isActive);
         // console.warn(this.showModal);
@@ -51,7 +56,7 @@ export class HeaderComponent implements OnInit {
   }
   closeModal() {
     this.showModal = !this.showModal;
-    this._login.loginModal.next(this.showModal)
+    this._login.loginModal.next(this.showModal);
     this.burger.nativeElement.checked = false
   }
 

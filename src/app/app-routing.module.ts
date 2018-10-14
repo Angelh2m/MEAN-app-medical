@@ -38,7 +38,7 @@ const appRoutes: Routes = [
       {
         path: 'card',
         component: PaymentsComponent,
-        canActivate: [LoginGuardGuard, PaymentGuard],
+        canActivate: [LoginGuardGuard],
       },
       {
         path: 'payment-confirmation',

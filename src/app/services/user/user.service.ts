@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import * as jwt_decode from "jwt-decode";
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { map, tap, catchError } from 'rxjs/operators';
@@ -32,9 +32,14 @@ export class UserService {
 
   constructor(private _http: HttpClient, private router: Router) { }
 
+  OnInit() {
+    console.log('USER SERVICE ACTIVATED!!!');
+  }
+
   setToken(token) {
     localStorage.setItem('Token', JSON.stringify(token))
   }
+
   getToken() {
     return this.userToken = localStorage.getItem('Token') ? localStorage.getItem('Token') : null;
   }
@@ -43,21 +48,31 @@ export class UserService {
   }
 
   isLogged() {
-    const token = jwt_decode(this.getToken());
-    // EPOC UNIX TIME MILLISECONDS TO SECONDS 
-    var tokenExpiry = new Date(token.exp * 1000);
-    var currentTime = new Date();
+    const token = this.getToken() !== null ? jwt_decode(this.getToken()) : null;
+    // console.log('token', token);
 
-    // console.warn(currentTime > tokenExpiry);
-    // console.log('------------------------');
-    // console.warn('EXP date', tokenExpiry);
-    // console.warn('CURRENT date', currentTime);
+    if (token) {
+      this.avatar.next(token.avatar);
 
-    if (currentTime > tokenExpiry) {
+      // // // EPOC UNIX TIME MILLISECONDS TO SECONDS 
+      var tokenExpiry = new Date(token.exp * 1000);
+      var currentTime = new Date();
+
+      if (currentTime > tokenExpiry) {
+        console.log('IT HAS EXPIRED');
+        return false
+      }
+
+      return true
+    }
+
+    if (!token) {
+      console.log('THERE IS NO TOKEN');
       return false
     }
 
-    return this.getToken() && this.getToken().length > 35 ? true : false;
+
+    return this.userTokenData && this.userTokenData.length > 35 ? true : false;
   }
 
   getUserDataTest() {
@@ -146,6 +161,13 @@ export class UserService {
       })
     )
   }
+
+  onUploadImage(userImages) {
+    const uploadData = new FormData();
+    uploadData.append('image', userImages, 'name');
+    return this._http.post('api/photos/upload', uploadData)
+  }
+
 
   makePayment(token) {
     const body = new HttpParams()

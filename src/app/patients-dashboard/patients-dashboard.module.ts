@@ -9,6 +9,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { UserService } from '../services/user/user.service';
 import { MedicalBackgroundComponent } from './medicalBackground/medical-background.component';
+import { FileUploadDirective } from './fileUpload/file-upload.directive';
 
 
 @NgModule({
@@ -23,6 +24,8 @@ import { MedicalBackgroundComponent } from './medicalBackground/medical-backgrou
     AppointmentsComponent,
     RecomendationsComponent,
     DashboardComponent,
-    MedicalBackgroundComponent]
+    MedicalBackgroundComponent,
+    FileUploadDirective
+  ]
 })
 export class PatientsDashboardModule { }

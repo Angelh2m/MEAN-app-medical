@@ -1,122 +1,147 @@
 <h2 class="subtitle--left">Conversation History</h2>
 <hr>
 
-
 <div class="conversation">
-  <table class="conversation-table">
-    <tr class="conversation-table__flex">
-      <!-- <th class="text--left">Doctor's name </th> -->
-      <th class="text--center">Subject </th>
-      <th class="text--right">Date</th>
-    </tr>
-    <tbody
+  <div class="conversation__controls">
+    <i
+      (click)="panelIsActive() "
+      class="button--respond"
+    >REPLY</i>
+    <i
+      (click)="panelIsActive() "
+      class="button--respond"
+    >New Question</i>
+  </div>
+
+  <div class="list">
+    <div class="list__header">
+      <span class="">Total Messages () </span>
+
+    </div>
+
+    <div
       *ngFor="let userQ  of questionsList ;let i=index "
       (click)=" selectMessage(i)"
-      [ngClass]="{active: isClicked[i]}"
     >
       <div
-        class="conversation__container"
+        class="list__container"
+        [ngClass]="{active: isClicked[i]}"
         #questionBox
       >
-        <tr class="conversation-table--cell">
+        <div class="">
+          <div class="list__user-date">
+            <span class="text--username">USER:NAME</span>
+            <span>{{userQ.date | date: 'dd/MM/yyyy'}}</span>
+          </div>
           <!-- <td>{{userQ.doctor}}</td> -->
-          <td>{{userQ.subject}} </td>
-          <td>{{userQ.date | date: 'dd/MM/yyyy'}}</td>
-        </tr>
+          <span>{{userQ.subject}} </span>
+        </div>
         <!-- <div
-          class="conversation__response"
-          *ngIf="isClicked[i]"
-        >
-          <small>{{userQ.content}}</small>
-        </div> -->
+            class="conversation__response"
+            *ngIf="isClicked[i]"
+          >
+            <small>{{userQ.content}}</small>
+          </div> -->
       </div>
-    </tbody>
-  </table>
-  <div class="conversation--display">
-    <h2 class="subtitle--left-small">Question: {{currentMessage.subject}}</h2>
-    <hr>
-    <h4> Details: </h4>
-    <p>
-      {{currentMessage.content}}
-      <!-- kekjhrkjewhrjkewhrkhkewkr jkwehrkjwer jkwehrkjewrh kejwhr
-      kekjhrkjewhrjkewhrkhkewkr jkwehrkjwer jkwehrkjewrh kejwhr
-      kekjhrkjewhrjkewhrkhkewkr jkwehrkjwer jkwehrkjewrh kejwhr
-      kekjhrkjewhrjkewhrkhkewkr jkwehrkjwer jkwehrkjewrh kejwhr -->
-    </p>
-    <hr>
-    <h4>Responses</h4>
-    <p>
-      {{currentMessage.answer}}
-      <!-- kekjhrkjewhrjkewhrkhkewkr jkwehrkjwer jkwehrkjewrh kejwhr
-      kekjhrkjewhrjkewhrkhkewkr jkwehrkjwer jkwehrkjewrh kejwhr
-      kekjhrkjewhrjkewhrkhkewkr jkwehrkjwer jkwehrkjewrh kejwhr
-      kekjhrkjewhrjkewhrkhkewkr jkwehrkjwer jkwehrkjewrh kejwhr -->
-    </p>
+    </div>
 
-    <hr>
-    <button class="button--respond">
-      Respond
-    </button>
-
-    <form>
-      <label for="">Reply</label>
-      <textarea>
-        TEXT
-      </textarea>
-    </form>
 
   </div>
 
-</div>
 
-<h2 class="subtitle--left">Ask a new question</h2>
-<hr>
+  <form
+    *ngIf="this.activePanel.newForm"
+    [formGroup]="question"
+    (ngSubmit)="askQuestion()"
+    class="card"
+  >
+    <h2 class="subtitle--left-small"></h2>
+    <div class="editor">
+      <div class="editor__header">
+        <span> Subject </span>
+        <input
+          formControlName="subject"
+          type="text"
+          placeholder="Question title"
+        >
+      </div>
+      <div class="editor__text-area">
+        <textarea
+          formControlName="content"
+          placeholder="How can we help you?"
+        ></textarea>
+      </div>
+    </div>
+    <button
+      type="submit"
+      class="button--blue"
+    >Send</button>
+  </form>
 
-<form
-  [formGroup]="question"
-  (ngSubmit)="askQuestion()"
-  class="card"
->
-  <h2 class="subtitle--left-small"></h2>
-  <div class="editor">
-    <div class="editor__header">
-      <span> Subject </span>
-      <input
-        formControlName="subject"
-        type="text"
-        placeholder="Question title"
-      >
+
+
+  <!-- EMAILS -->
+
+  <div
+    class="messages"
+    *ngIf="this.activePanel.messages"
+  >
+    <h4 class="text--category"> {{currentMessage.subject}} </h4>
+    <span class="text--message-details">Specialist: Ortopedist</span>
+    <span class="text--message-details">Name: Dr. John Doe</span>
+    <span class="text--message-details">Date: 12/12/2019</span>
+
+    <hr>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, nostrum dolorem! Cupiditate vel repellat
+      aperiam ipsa perferendis deserunt dolores eligendi velit atque obcaecati aspernatur sequi accusamus eaque
+      perspiciatis, aut rerum?
+      {{currentMessage.content}}
+    </p>
+    <hr>
+    <h4 class="text--category">Responses</h4>
+    <p class="conversation__main-response">
+      {{currentMessage.answer}}
+    </p>
+    <div
+      class="conversation__replies"
+      *ngFor="let item of currentMessage.answers"
+    >
+      <div class="conversation__indicator--user">
+        <div class=""> {{item.user}} </div>
+        <p class="date"> {{item.answer}} </p>
+        <span class="conversation__indicator--date"> {{item.date}} </span>
+      </div>
     </div>
     <div class="editor__text-area">
-      <textarea
-        formControlName="content"
-        placeholder="How can we help you?"
-      ></textarea>
+      <form>
+
+        <textarea
+          class="editor__text-area"
+          placeholder="Type your response here..."
+        ></textarea>
+
+        <div
+          appFileUpload
+          (filesDropped)='hanldeDrop($event)'
+          (filesHovered)='dropzoneState($event)'
+          class="button--drop-upload"
+        >
+          <span>DROP YOUR FILES HERE</span>
+        </div>
+
+
+        <button
+          type="submit"
+          class="button--blue"
+        >Send</button>
+      </form>
+
     </div>
+
+
+
+
+
   </div>
-  <button
-    type="submit"
-    class="button--blue"
-  >Send</button>
-</form>
-
-
-
-
-<!-- <table class="conversation-table">
-  <tr class="conversation-table__flex">
-    <th class="text--left">Doctor's name </th>
-    <th class="text--center">Subject </th>
-    <th class="text--right">Date</th>
-  </tr>
-  <tr class="conversation-table--cell">
-    <td>Doctor's name </td>
-    <td>Help wiht medication instructions </td>
-    <td>06/31/18 4:00pm</td>
-  </tr>
-  <tr class="conversation-table--cell">
-    <td>Doctor's name </td>
-    <td>Help wiht medication instructions </td>
-    <td>06/31/18 4:00pm</td>
-  </tr>
-</table> -->
+</div>

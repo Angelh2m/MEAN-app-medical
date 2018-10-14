@@ -25,8 +25,7 @@ import { PaymentsService } from '../services/payments/payments.service';
   declarations: [
     HeaderComponent,
     LoginComponent,
-    FooterComponent
-
+    FooterComponent,
   ],
   exports: [
     HeaderComponent,

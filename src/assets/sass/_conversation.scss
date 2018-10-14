@@ -1,0 +1,96 @@
+.conversation {
+  display: flex;
+  position: relative;
+
+  .card {
+    padding-top: 9.5rem;
+
+  }
+
+  &__controls {
+    position: absolute;
+    right: 1rem;
+    z-index: 999;
+
+    i {
+      margin-left: 1rem;
+    }
+  }
+
+  p {
+    margin-bottom: 2rem;
+  }
+
+  .list {
+    width: 40%;
+    background-color: white;
+    font-size: 1.3rem;
+    /* border: solid 1px #e4e4e4; */
+    border-right: 0;
+    background-color: #fdfdfd;
+    color: black;
+    font-weight: 400;
+
+
+
+
+    &__header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+      padding: 2rem;
+    }
+
+    &__container {
+      padding: 0.2rem .5rem;
+      height: 9rem;
+      font-size: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      border-top: solid 1px #e2e2e2;
+      padding-right: 3rem;
+
+      &.active {
+        background-color: #f6f7f9;
+        border-left: solid 2px yellowgreen;
+      }
+    }
+
+    &__user-date {
+      justify-content: space-between;
+      display: flex;
+      margin-bottom: 1rem;
+    }
+  }
+
+  .messages {
+    background-color: white;
+    width: 100%;
+    padding: 1.5rem;
+    border-left: solid 3px whitesmoke;
+  }
+
+  &__replies {
+    margin-bottom: 1rem;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  &__indicator {
+    &--user {
+      border-bottom: solid 1px #e2e2e2;
+      margin-bottom: 3rem;
+      padding-bottom: 3rem;
+    }
+
+    &--date {
+      float: right;
+      display: block;
+      font-size: 1rem;
+    }
+  }
+}
